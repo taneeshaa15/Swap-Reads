@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Poppins:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../css/login.css" />
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="./assets/css/MenuClick.css">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon_package_v0.16/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon_package_v0.16/favicon-16x16.png">
+  <link rel="manifest" href="../favicon_package_v0.16/site.webmanifest">
+  <link rel="mask-icon" href="../favicon_package_v0.16/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="../js/script.js" defer></script>
+  <script src="../js/signup.js"></script>
+
+  <script src="../js/scroll-reveal.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script type="module" src="../js/login.js" defer></script>
+  <script src="../js/rateUsModal.js" defer></script>
+
+  <!-- rroushan verma -->
+  <script src="../js/signinGoogle.js" defer type="module"></script>
+  <!-- end -->
+  <title>Login / SignUp</title>
+</head>
+<style>
+
+/* Swiper Container */
+.swiper-container {
+  width: 100%;
+  height: 75%;
+}
+
+/* Theme Change Button Style */
+@media (max-width: 990px) {
+  .switch-container {
+    margin-top: 3.2rem;
+    margin-right: -0.5rem;
+  }
+}
+@media (max-width: 575px) {
+  .switch-container {
+    margin-top: 2.4rem;
+    margin-right: -0.5rem;
+  }
+  /* Navbar Toggle Button placed in center */
+  .nav-toggle-btn {
+    margin-top: -2rem;
+    margin-left: 2.2rem;
+  }
+}
+
+/* General Span Style */
+span {
+  position: relative;
+  font-size: 8px;
+  line-height: 18px;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  color: var(--charcoal);
+}
+
+/* Switch Label */
+.switch-label {
+  margin-left: -30px;
+  margin-right: 40px;
+  margin-bottom: 20px;
+  margin-top: 92px;
+}
+
+/* Button Image */
+button img {
+  height: 40px;
+  position: relative;
+  right: 100px;
+  width: 40px;
+  display: flex;
+}
+
+/* Header */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 10;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+/* Action */
+.action {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+}
+
+.action .profile {
+  margin-top: 24px;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.action .profile img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.action .menu {
+  position: absolute;
+  top: 120px;
+  right: -10px;
+  padding: 10px 20px;
+  background: #fff;
+  width: 200px;
+  box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  transition: 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.action .menu.active {
+  top: 80px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.action .menu::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: 28px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+.action .menu h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px 0;
+  font-weight: 500;
+  color: #555;
+  line-height: 1.5em;
+}
+
+.action .menu h3 span {
+  font-size: 14px;
+  color: #cecece;
+  font-weight: 300;
+}
+
+.action .menu ul li {
+  list-style: none;
+  padding: 16px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+}
+
+.action .menu ul li img {
+  max-width: 20px;
+  margin-right: 10px;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+.action .menu ul li:hover img {
+  opacity: 1;
+}
+
+.action .menu ul li a {
+  display: inline-flex;
+  text-align: center;
+  padding-left: 5%;
+  font-weight: 300;
+  font-size: 19px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: 0.5s;
+}
+
+.action .menu ul li:hover a {
+  color: #ff5d94;
+  font-size: 21px;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  top: 24px;
+  left: 1.5%;
+}
+
+.line {
+  width: 36px;
+  height: 5px;
+  margin: 4px 4px;
+  background-color: rgb(240, 15, 15);
+}
+.forget-password {
+  color: black;
+}
+.forget-password a{
+  color: black;
+}
+.dark-mode .forget-password a{
+  color: white;
+}
+.dark-mode .forget-password{
+  color: white;
+}
+.list-item span{
+  color: rgb(240, 15, 15);
+  font-size: 10px;
+}
+#google-signup{
+  margin-top: 30px;
+}
+
+
+@media only screen and (max-width: 1063px) {
+  .nav {
+    flex-direction: column;
+  }
+  .header {
+    flex-direction: column;
+    height: 53.8rem;
+    transition: 0.55s all ease-out;
+    padding-top: 5px;
+  }
+  .navbar-item {
+    margin-right: 40px;
+  }
+  .navbar-list {
+    position: relative;
+    top: 200px;
+  }
+  .hamburger {
+    display: block;
+  }
+  .nav-h {
+    height: 78px;
+    width: 100vw;
+  }
+  .vis-h {
+    opacity: 0;
+  }
+  .logo img {
+    position: relative;
+    top: 17px;
+    left: 350px;
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  .header {
+    height: 0;
+  }
+  .navbar-list {
+    top: 0;
+  }
+  .logo img {
+    top: -9px;
+    left: 50px;
+  }
+}
+
+.navbar-item {
+  margin-top: 10px; /* Increase the top margin of each item */
+}
+
+.navbar-link {
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+  background-color: none; /* Remove background color */
+  border: none; /* Remove border */
+  text-decoration: none; /* Remove text underline */
+  color: inherit; /* Use the inherited text color */
+  padding: 0; /* Adjust padding as needed */
+}
+.navbar-list{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* footer  */
+
+.socialmediaicons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    margin-top: 120px;;
+    width: 40px;
+    height: 150px;
+  
+}#quicklinks {
+  display: flex;
+  justify-content: space-between; /* Ensures columns are evenly spaced */
+}
+
+#quicklinks .col-md-6 ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#quicklinks .foot-quick {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Adjust spacing between list items */
+}
+
+#quicklinks .foot-quick a {
+  text-decoration: none;
+  color: rgb(83, 74, 74); /* Adjust link color as needed */
+  display: flex;
+  align-items: center;
+}
+
+#quicklinks .foot-quick a i {
+  margin-right: 5px; /* Adjust spacing between icon and text */
+}
+.dark-mode .fas{
+  color:white;
+}
+.dark-mode .flinks{
+  color:white;
+}
+.dark-mode .finput{
+      color: white;
+      background-color: transparent; 
+      padding: 10px; 
+      border: 1px solid white;
+      
+}
+.dark-mode .finput::placeholder {
+      color: rgba(255, 255, 255, 0.6); 
+    }
+.socialmediaicons a {
+    display: inline;
+    text-align: center;
+    padding: 5px;
+    transition: all 0.3s ease;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+  }
+
+  .socialmediaicons .fa-instagram {
+  display: inline-block;
+  width: 30px; 
+  height: 30px; 
+  text-align: center;
+  line-height: 30px; 
+  border-radius: 10px;
+  background: transparent;
+  color: #000000;
+  transition: background 0.3s, transform 0.3s; 
+}
+
+.socialmediaicons .fa-instagram:hover {
+  background: radial-gradient(circle at 30% 110%, 
+                               #ffdb8b 0%, 
+                               #ee653d 25%, 
+                               #d42e81 50%, 
+                               #a237b6 75%, 
+                               #3e57bc 100%);
+  background-clip: padding-box;
+  border-radius: 10px; 
+  color: white; 
+  transform: scale(1.1); 
+  
+}  
+.socialmediaicons .fa-facebook:hover{
+  color: blue;
+}   
+.socialmediaicons .fa-youtube:hover{
+  color: red;
+}
+
+
+.dark-mode .socialmediaicons a {
+  color: white;
+}
+
+
+.dark-mode .socialmediaicons .fa-facebook:hover {
+  color: #425d9b
+}
+.dark-mode .socialmediaicons .fa-youtube:hover {
+  color: #f70000;
+}
+
+  .instagram {
+    
+    margin: 5px;
+    
+  }
+
+
+  .facebook {
+    
+    margin: 5px;
+  }
+  
+  .youtube {
+   
+    margin: 5px;
+  }
+
+  .input-box {
+    position: relative;
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    padding-right: 40px; /* Space for the eye icon */
+}
+
+#eyeicon-register {
+    position: absolute;
+    top: 70%;
+    right: 10px; /* Adjust as needed */
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 35px; /* Adjust the size of the icon */
+    height: 30px;
+}
+.but{
+  font-size: x-large;
+}
+</style>
+<body>
+
+  <div class="nav-wrapper">
+    <div class="progress-bar"></div>
+  </div>
+  
+
+  <header class="header header-anim nav-h" data-header>
+
+    <div class="container mobile-container-styles" style="padding-left: 0;">
+      <nav class="navbar nav_activated" data-navbar>
+        
+        <ul class="navbar-list nav" style="border-radius: 5px;">
+          <a href="../../index.html" onclick="lenis.scrollTo('index.html');" class="logo" style="display:flex; background-color: none;">
+            <img src="../images/final.png" class="logopic" style=" width: 150px;">
+          </a>
+          <li class="navbar-item">
+            <a href="../../index.html" onclick="lenis.scrollTo('#home')" style="background-color: none;" class="navbar-link" data-nav-link><i
+                class="ri-home-fill"></i> Home</a>
+          </li>
+           <li class="navbar-item">
+                <a href="../html/about.html" onclick="lenis.scrollTo('#home')"  class="navbar-link" data-nav-link><i
+                    class="ri-home-fill"></i>About Us</a>
+              </li>
+              
+          <li class="navbar-item">
+            <a href="../../index.html#benefits" onclick="lenis.scrollTo('#benefits')" class="navbar-link" data-nav-link><i
+                class="ri-bar-chart-fill"></i> Benefits</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="../../index.html#genre" onclick="lenis.scrollTo('#genre')" class="navbar-link" data-nav-link><i
+                class="ri-bar-chart-fill"></i> Genre</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="../../index.html#contact" onclick="lenis.scrollTo('#contact')" class="navbar-link" data-nav-link><i
+                class="ri-customer-service-2-fill"></i> Contact</a>
+            </li>
+            <li class="navbar-item">
+              <a href="../../index.html#faq" onclick="lenis.scrollTo('#faqq')" class="navbar-link" data-nav-link>
+                  <i class="ri-questionnaire-fill"></i>FAQ</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="../../index.html#rateus" onclick="openRateUsModal(); return false;" class="navbar-link">Rate Us</a></li>
+           
+          <li class="navbar-item" id="login-signup-link">
+            <a href="..//html/login.html" class="navbar-link">Login/Signup</a>
+          </li>
+          
+          
+          <li class="navbar-item dropdown" id="more-dropdown">
+            <a href="#" class="navbar-link" id="more-link">More
+              <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em"
+                viewBox="0 0 24 24">
+                <path fill="currentcolor" d="m12 13.171l4.95-4.95l1.414 1.415L12 16L5.636 9.636L7.05 8.222z" />
+              </svg></a>
+            <div class="dropdown-menu" id="dropdown-menu">
+
+              <ul class="dropdown-menu-list">
+                <li>
+                  <a href="chat.html" class="navbar-link" style="font-family: sans-serif; color: black; margin-bottom: 5px;">
+                    Community chat
+                </a>
+                </li>
+                
+                <li class="dropdown-menu-item">
+                  <a href="../html/pricing.html" onclick="lenis.scrollTo('#pricing')" class="navbar-link" data-nav-link><i
+                      class="ri-price-tag-3-fill"></i> Pricing</a>
+                </li>
+                <li class="dropdown-menu-item">
+                  <a href="../html/booklistswap.html" class="navbar-link">Booklist for Swapping</a>
+                </li>
+                <li class="dropdown-menu-item">
+                  <a href="../html/book_recommend.html" class="navbar-link" data-nav-link>
+                    <i class="ri-customer-service-2-fill"></i> Book Recommendation
+                  </a>
+                </li>
+                <li class="dropdown-menu-item">
+                  <a href="../html/freeBooks.html" onclick="lenis.scrollTo('#E-books')" class="navbar-link"
+                    data-nav-link><i class="ri-price-tag-3-fill"></i>Free E-books</a>
+                </li>
+                <li class="dropdown-menu-item">
+                  <a href="../html/read_later.html" class="navbar-link" data-nav-link><i class="ri-price-tag-3-fill"></i>Read Later</a>
+                </li>
+                <li class="dropdown-menu-item">
+                  <a href="../html/ConnReader.html" class="navbar-link" data-nav-link><i class="ri-price-tag-3-fill"></i>Reader Connection</a>
+                </li>
+                <li class="dropdown-menu-item">
+                  <a href="../html/about.html" class="navbar-link">About</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <style>
+            .darkmode{
+                white-space: nowrap;
+                display: inline-block;
+                background-color: none;
+                border: none;
+                text-decoration: none;
+                color: inherit;
+                padding: 0;
+
+                transition: all 0.3s ease;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 0px;
+                text-decoration: none;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                color: var(--charcoal);
+                padding: 8px 12px;
+                line-height: 2;
+                transition: var(--transition-1);
+
+                .container {
+            width: 100%;
+        }
+        .main {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .login {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .input {
+            margin: 10px 0;
+        }
+        .input-box {
+            position: relative;
+        }
+        .input-box img {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .p1 {
+            margin: 10px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .social-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+            }
+          </style>
+          <li>
+            <div class="navbar darkmode" style="top: 15px; right:20px;">
+              <input type="checkbox" id="switch" class="switch-checkbox">
+              <label for="switch" class="switch-label">
+                <div class="switch-button">
+                  <span class="material-icons sun-icon">wb_sunny</span>
+                  <span class="material-icons moon-icon">brightness_2</span>
+                </div>
+              </label>
+            </div>
+          </li>
+          
+          <li>
+          <div class="action">
+            <div class="profile" onclick="menuToggle();">
+              <img id="profile-avatar" src="../images/avatar1.jpg" />
+            </div>
+            <div class="menu">
+              <h3>XYZ<br /><span>Book Lover</span></h3>
+              <ul>
+                <li>
+                  <img src="../images/user.jpg" /><a href="../../profile.html">My profile</a>
+                </li>
+                <li>
+                  <img src="../images/edit profile.jpg" /><a href="../html/profileedit.html">Edit profile</a>
+                </li>
+                <li>
+                  <img src="../images/inbox.png" /><a href="#">Inbox</a>
+                </li>
+                <li>
+                  <img src="../images/settings.png" /><a href="#">Settings</a>
+                </li>
+                <li><img src="../images/help.png" /><a href="#">Help</a></li>
+                <li>
+                  <img src="../images/logout.png" /><a href="#">Logout</a>
+                </li>
+              </ul>
+            </li>
+              </div>
+            </ul>
+              </div>
+              <script>
+               document.addEventListener("DOMContentLoaded", () => {
+    const savedAvatar = localStorage.getItem("selectedAvatar");
+    if (savedAvatar) {
+        document.getElementById("profile-avatar").src = `./assets/images/${savedAvatar}`;
+    }
+});
+
+        
+                function menuToggle() {
+                    const toggleMenu = document.querySelector(".menu");
+                    toggleMenu.classList.toggle("active");
+                }
+            </script>
+        </ul>
+      </nav>
+      <div id="mobile_View_Menu">
+        <span id="menu_lines"></span>
+       </div>
+    <script>
+        let menu=document.getElementById('mobile_View_Menu')
+        let navbar_con=document.querySelector('.navbar')
+        menu.addEventListener('click',()=>{
+          if(menu.classList.contains('open_menu')){
+            menu.classList.remove('open_menu')
+            navbar_con.classList.add('nav_activated')
+          }
+          else{
+            menu.classList.add('open_menu')
+            navbar_con.classList.remove('nav_activated')
+          }
+        })
+      </script>
+    <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+    <script>
+      function loadGoogleTranslate() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en'
+        }, 'google_element');
+      }
+    </script>
+    <script>
+
+  window.addEventListener("scroll", onScroll);
+</script>
+    </div>
+  </header>
+
+
+  <div class="note">
+    <h1>Welcome to SwapReads</h1>
+    <h2>Join us by creating an account or log in if you already have an account.</h2>
+  </div>
+  <br />
+
+  <div class="container">
+    <div class="main">
+        <input type="checkbox" id="chk" aria-hidden="true" />
+        <div class="login">
+            <form class="form" id="loginForm">
+                <a href="..//html/login.html">
+                    <label for="chk" aria-hidden="true" class="login">LOGIN</label>
+                </a>
+                <input class="input" type="email" name="email" id="loginEmail" placeholder="Email" required />
+                <div class="input-box">
+                  <input class="input" type="password" name="pswd" id="loginPassword" placeholder="Password" required />
+                  <img src="../images/eye-close.png" alt="Eye close-image" id="eyeicon-login">
+                </div>
+                <button type="submit" name="Login" id="login">Submit</button>
+                <p class="forget-password">
+                    Forgot Password?
+                    <a href="forgot-pass.html" id="forgot_password_link">Reset Here</a>
+                </p>
+                <div id="or">Or</div>
+                <div class="social-buttons" style="display: flex; gap: 5px; justify-content: center;">
+                    <button class="p1" id="google-sign-in" style="
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        width: 200px; 
+                        height: 40px; 
+                        margin-left: 20px;
+                        background-color: #4285F4; 
+                        color: white; 
+                        border: none; 
+                        border-radius: 24px; 
+                        font-size: 14px; 
+                        font-weight: bold; 
+                        cursor: pointer; 
+                        outline: none; 
+                        text-align: center;
+                    ">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 48 48" style="fill: currentColor; margin-right: 8px;">
+                            <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path>
+                            <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path>
+                            <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path>
+                            <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
+                        </svg>
+                        Sign In With Google
+                    </button>
+                    <button class="p1" id="facebook-sign-in" style="
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        width: 200px; 
+                        height: 40px; 
+                        background-color: #3b5998; 
+                        color: white; 
+                        border: none; 
+                        border-radius: 24px; 
+                        font-size: 14px; 
+                        font-weight: bold; 
+                        cursor: pointer; 
+                        outline: none; 
+                        text-align: center;
+                    ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: currentColor; margin-right: 8px;">
+                            <path fill="#ffffff" d="M12 2.048c-5.52 0-9.952 4.432-9.952 9.952 0 5.2 4.2 9.6 9.6 9.952v-7h-2.9v-2.9h2.9v-2.1c0-2.8 1.8-4.6 4.4-4.6 1.3 0 2.4.1 2.7.2v3h-1.9c-1.5 0-1.9.7-1.9 1.8v2.2h3.6l-.5 2.9h-3.1v7c5.4-.3 9.6-4.8 9.6-9.952 0-5.52-4.432-9.952-9.952-9.952z"/>
+                        </svg>
+                        Sign In With Facebook
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+
+      <div class="register">
+        <form class="form" id="registerForm" id="register-form">
+          <label class="but" for="chk" aria-hidden="true">Create Account</label>
+          <input class="input" type="email" name="email" id="registerEmail" placeholder="Email" required />
+          <div class="input-box">
+            <input class="input" type="password" name="pswd" id="registerPassword" placeholder="Password" required />
+<img src="../images/eye-close.png" alt="Eye close-image" id="eyeicon-register">
+          </div>
+
+          <div>
+            <div class="progress">
+              <div id="password-strength" class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+            <ul class="list-unstyled">
+
+              <li class="list-item" ><i class="fa-solid fa-check" id="uppercaseCheck" style="display: none;" ></i><span class="low-upper-case fade "> Lowercase &amp; Uppercase</span></li>
+              <li class="list-item" ><i class="fa-solid fa-check" id="numberCheck" style="display: none;" ></i><span class="one-number fade ">Number (0-9)</span></li>
+              <li class="list-item" ><i class="fa-solid fa-check" id="specialCheck" style="display: none;" ></i><span class="one-special-char fade ">Special Character (!@#$%^&*)</span></li>
+              <li class="list-item" ><i class="fa-solid fa-check" id="eightCharacter" style="display: none;" ></i><span class="eight-character fade ">At least 8 Character</span></li>
+            </ul>
+            
+          </div>
+          <br>
+          <button type="submit" name="register" id="register">Register</button>
+          <div id="or">Or</div>
+          <br>
+        
+          <button id="google-signup"> Sign Up with Google </button>
+          
+          
+        </form>
+      </div>
+    </div>
+  </div>
+  <hr />
+  
+  <footer class="ff">
+    <div class="foot-top">
+      <div class="foot-left">
+
+        <div class="desc">
+<!--google translate-->
+          <div id="google_translate_element"></div>
+
+          <script type="text/javascript">
+              function googleTranslateElementInit() {
+                  new google.translate.TranslateElement(
+                      {pageLanguage: 'en'},
+                      'google_translate_element'
+                  );
+              }
+          </script>
+
+          <script type="text/javascript"
+                  src=
+      "https://translate.google.com/translate_a/element.js?
+      cb=googleTranslateElementInit">
+          </script>
+          <div class="SwapReads"><a href="#" class="logo">SwapReads</a></div>
+          <div>
+            <p style="text-align: justify; " class="description">SwapReads.com is the ultimate destination for book
+              lovers
+              seeking to swap and
+
+              discover new literary gems.
+              Connect with fellow enthusiasts, exchange your favorite reads, and embark on exciting new adventures in
+              the
+              world of literature—all on one convenient platform. Join us and dive into a universe of endless
+              possibilities!
+            </p>
+          </div>
+
+        </div>
+      </div>
+      <div class="foot-middle">
+        <h2>Quick Links</h2>
+        <div id="quicklinks" class="row">
+          <div class="col-md-6">
+            <ul>
+              <li class="foot-quick" style="color: white;"><a href="/index.html#home" onclick="lenis.scrollTo('#home')"><i class="fas fa-home"></i><p class="flinks">Home</p></a></li>
+              <li class="foot-quick"><a href="/index.html#benefits" onclick="lenis.scrollTo('#benefits')"><i class="fas fa-book"></i> <p class="flinks">Benefits</p></a></li>
+              <li class="foot-quick"><a href="/index.html#chapters" onclick="lenis.scrollTo('#chapters')"><i class="fas fa-globe"></i> <p class="flinks">Literary</p></a></li>
+              <li class="foot-quick"><a href="/index.html#pricing" onclick="lenis.scrollTo('#pricing')"><i class="fas fa-dollar-sign"></i><p class="flinks">Pricing</p> </a></li>
+              <li class="foot-quick"><a href="./assets/html/bookrecommend.html" onclick="lenis.scrollTo('#contact')"><i class="fas fa-bookmark"></i><p class="flinks">Recommend</p></a></li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul>
+              <li class="foot-quick"><a href="/assets/html/booklistswap.html" onclick="lenis.scrollTo('#contact')"><i class="fas fa-exchange-alt"></i><p class="flinks">Swap</p> </a></li>
+              <li class="foot-quick"><a href="/assets/html/freeBooks.html" onclick="lenis.scrollTo('#contact')"><i class="fas fa-file-pdf"></i> <p class="flinks">E-Book</p></a></li>
+              <li class="foot-quick"><a href="/assets/html/about.html" onclick="lenis.scrollTo('#contact')"><i class="fas fa-info-circle"></i> <p class="flinks">About</p></a></li>
+              <li class="foot-quick"><a href="/index.html#contact" onclick="lenis.scrollTo('#contact')"><i class="fas fa-envelope"></i><p class="flinks">Contact</p> </a></li>
+              <li class="foot-quick"><a href="/index.html#faqq" onclick="lenis.scrollTo('#faqq')"><i class="fas fa-question-circle"></i> <p class="flinks">FAQ</p></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+
+        <style>
+          .social-icons input[type="email"] 
+          {
+              border: 2px solid #ccc; /* Gray border */
+              border-radius: 4px; /* Rounded corners */
+              padding: 10px; /* Inner padding */
+              font-size: 16px; /* Font size */
+          }
+          #confirmationMessage
+          {
+            margin-left: 50px;
+            font-size: 23px;
+            color: green;
+
+          }
+         /* for small screen */
+          @media (max-width: 768px) 
+          {
+            #confirmationMessage 
+            {
+                margin-left: 0;
+                text-align: center;
+                font-size: 18px;
+            }
+        }
+        </style>
+        <style>
+          #confirmationmessage {
+    position: fixed;
+    top: 42rem;
+    right: 10px;
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: none;
+}
+
+        </style>
+
+     <form id="newsform" onsubmit="return showConfirmationMessage();">
+      <label for="new-email" class="news-form">Subscribe to our Newsletter</label>
+      <div class="row-flex display-flex">
+          <input class="finput" type="email" id="new-email" name="email" placeholder="Email address"
+                 pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.com$"
+                 title="Please enter a valid email address that ends with '.com'" required>
+          <input type="submit" value="Subscribe" name="subscribe" class="subscribe" id="subs">
+      </div>
+  </form>
+  <div id="confirmationmessage" style="display: none;">Thank you for subscribing!</div>
+    
+  <script>
+ function showConfirmationMessage() {
+
+  const form = document.getElementById('newsform');
+  const confirmationMessage = document.getElementById('confirmationmessage');
+
+  
+  confirmationMessage.style.display = 'block';
+  setTimeout(function() {
+    location.reload(); 
+  }, 3000);
+
+
+ 
+}
+
+
+
+</script>
+<style>
+  
+.subscribe {
+  background-color: #A30F17;
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  font-size: 16px; 
+  font-family: Arial, sans-serif;
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.subscribe:hover {
+  background: linear-gradient(hwb(357 6% 36%), #d26d6d);
+  transform: scale(1.1);
+}
+
+.subscribe:active {
+  transform: scale(0.98); 
+}
+
+.subscribe:focus {
+  outline: none; 
+}
+
+</style>
+
+<!-- <script>
+  function showConfirmationMessage() 
+  {
+    // Show confirmation message
+    const confirmationMessage = document.getElementById('confirmationMessage');
+    confirmationMessage.innerHTML = "Thank you for subscribing!";
+    confirmationMessage.style.display = 'block';
+
+    // Reset the form after 3 seconds
+    setTimeout(function() 
+    {
+        document.getElementById('newsletterForm').reset();
+        confirmationMessage.style.display = 'none';
+        
+    }, 3000);
+
+    return false; 
+}
+</script>-->
+        <div class="icons">
+          <a href="https://www.discord.com/" target="_blank">
+            <div class="icon">
+              <i class="fab fa-discord" title="Discord" style="cursor: pointer;"></i>
+            </div>
+           </a>
+
+          <a href="https://www.linkedin.com/in/anurag-verma-b91417253/" target="_blank">
+            <div class="icon">
+              <i class="fab fa-linkedin" title="linkedin" style="cursor: pointer;"></i>
+            </div>
+          </a>
+
+          <a href="https://www.facebook.com/" target="_blank">
+            <div class="icon">
+              <i class="fab fa-facebook" title="Facebook" style="cursor: pointer;"></i>
+            </div>
+          </a>
+
+          <a href="https://x.com/anuragverma_108" target="_blank">
+            <div class="icon">
+              <i class="fab fa-twitter" title="X"style="cursor: pointer;"></i>
+            </div>
+          </a>
+
+          <a href="https://www.instagram.com/">
+            <div class="icon" id="insta-icon">
+              <i class="fab fa-instagram" title="Instagram"style="cursor: pointer;"></i>
+            </div>
+          </a>
+
+
+          <a href="https://www.youtube.com/@anuragbytes" target="_blank" title="YouTube">
+            <div class="icon">
+              <i class="fab fa-youtube" style="cursor: pointer;"></i>
+            </div>
+          </a>
+
+
+
+          <a href="https://github.com/anuragverma108">
+            <div class="icon">
+              <i class="fab fa-github" title="Github"></i>
+            </div>
+          </a>
+         
+
+        </div>
+       </div>
+       <div>
+        <div id="back-to-top-container" onclick="lenis.scrollTo('#home')" class="right">
+          <button class="Btn">
+            <svg height="1.2em" class="arrow" viewBox="0 0 512 512"><path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path></svg>
+          <p class="text">Back to Top</p>
+          </button>
+        </div>
+        <div>
+          <button id="translateButton">Translate</button>
+        </div>
+      </div>
+
+      </div>
+    </div>
+
+
+
+
+    <!-- adding privacy policy and copyright popup-->
+    <div class="footer-f" style="text-align: center; align-items: center;">
+      <p style="text-align: center">
+        &copy;
+        <script>document.write(new Date().getFullYear())</script> All Rights Reserved. Made with ❤ by Guardian Hackers.
+      </p>
+      <div class="row-copy">
+
+
+      <a href="/copyrightpolicy.html" id="copyrightPolicyLink">Copyright Policy</a> |
+      <a href="/privacynotice.html" id="privacyNoticeLink">Privacy Notice</a>  
+      <a href="/our-vision.html">Our Vision</a></li>
+    </div>
+    </div>
+
+    <!-- Copyright Policy Modal -->
+    <!-- <div id="copyrightPolicyModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeCopyright">&times;</span>
+        <h1>Copyright Policy</h1>
+        <p>Welcome to SwapReads. Here is our copyright policy:</p>
+        <ul>
+          <li>All content on this website is owned by SwapReads unless otherwise stated.</li>
+          <li>You may not reproduce, distribute, or use the content without prior written permission.</li>
+          <li>Users may download and print content for personal use only.</li>
+          <li>Unauthorized use of any content may violate copyright, trademark, and other laws.</li>
+          <li>If you believe your copyrighted work is being infringed upon, please contact us with detailed information.</li>
+        </ul>
+      </div>
+    </div> -->
+
+    <!-- Privacy Notice Modal -->
+    <!-- <div id="privacyNoticeModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closePrivacy">&times;</span>
+        <h1>Privacy Notice</h1>
+        <p>Welcome to SwapReads. Here is our privacy notice:</p>
+        <ul>
+          <li>We collect personal information when you register, buy, or sell books.</li>
+          <li>We use this information to provide and improve our services.</li>
+          <li>We do not share your personal information with third parties without your consent.</li>
+          <li>We take reasonable measures to protect your data from unauthorized access.</li>
+          <li>You can contact us to update or delete your personal information.</li>
+          <li>By using our site, you consent to our privacy practices.</li>
+        </ul>
+      </div>
+    </div> -->
+
+    <!-- <script>
+      // Get the modal elements
+      var copyrightModal = document.getElementById("copyrightPolicyModal");
+      var privacyModal = document.getElementById("privacyNoticeModal");
+
+      // Get the link elements
+      var copyrightLink = document.getElementById("copyrightPolicyLink");
+      var privacyLink = document.getElementById("privacyNoticeLink");
+
+      // Get the <span> elements that close the modals
+      var closeCopyright = document.getElementById("closeCopyright");
+      var closePrivacy = document.getElementById("closePrivacy");
+
+      // When the user clicks the link, open the modal
+      copyrightLink.onclick = function() {
+        copyrightModal.style.display = "block";
+      }
+      privacyLink.onclick = function() {
+        privacyModal.style.display = "block";
+      }
+
+      // When the user clicks on <span> (x), close the modal
+      closeCopyright.onclick = function() {
+        copyrightModal.style.display = "none";
+      }
+      closePrivacy.onclick = function() {
+        privacyModal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == copyrightModal) {
+          copyrightModal.style.display = "none";
+        }
+        if (event.target == privacyModal) {
+          privacyModal.style.display = "none";
+        }
+      }
+    </script> -->
+
+
+
+  </footer>
+
+
+  <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+            let low_upper_case = document.getElementsByClassName("low-upper-case")[0];
+            let one_number = document.getElementsByClassName("one-number")[0];
+            let one_special_char = document.getElementsByClassName("one-special-char")[0];
+            let eight_character = document.getElementsByClassName("eight-character")[0];
+            let password = document.getElementById("registerPassword");
+            let uppercaseCheck = document.getElementById('uppercaseCheck');
+            let eightCharacter = document.getElementById('eightCharacter');
+            let numberCheck = document.getElementById('numberCheck');
+            let specialCheck = document.getElementById('specialCheck');
+
+            function containsLowerCaseOrUpperCase(password) {
+                const hasLowerCase = /[a-z]/.test(password);
+                const hasUpperCase = /[A-Z]/.test(password);
+                return hasLowerCase || hasUpperCase;
+            }
+
+            password.addEventListener("input", () => {
+                if (password.value.length >= 8) {
+                    eightCharacter.style.display = 'block';
+                    eight_character.classList.remove("fade");
+                } else {
+                    eightCharacter.style.display = 'none';
+                    eight_character.classList.add("fade");
+                }
+
+                if (containsLowerCaseOrUpperCase(password.value)) {
+                    uppercaseCheck.style.display = 'block';
+                    low_upper_case.parentElement.style.listStyleType = 'none'
+                    low_upper_case.classList.remove("fade");
+                } else {
+                    uppercaseCheck.style.display = 'none';
+                    low_upper_case.classList.add("fade");
+                }
+
+                if (/[0-9]/.test(password.value)) {
+                    numberCheck.style.display = 'block';
+                    one_number.classList.remove("fade");
+                } else {
+                    numberCheck.style.display = 'none';
+                    one_number.classList.add("fade");
+                }
+
+                if (/[!@#$%^&*]/.test(password.value)) {
+                    specialCheck.style.display = 'block';
+                    one_special_char.classList.remove("fade");
+                } else {
+                    specialCheck.style.display = 'none';
+                    one_special_char.classList.add("fade");
+                }
+            });
+        });
+    const coords = { x: 0, y: 0 };
+    const circles = document.querySelectorAll(".circle");
+
+    const colors = [
+      "#ffb56b",
+      "#fdaf69",
+      "#f89d63",
+      "#f59761",
+      "#ef865e",
+      "#ec805d",
+      "#e36e5c",
+      "#df685c",
+      "#d5585c",
+      "#d1525c",
+      "#c5415d",
+      "#c03b5d",
+      "#b22c5e",
+      "#ac265e",
+      "#9c155f",
+      "#950f5f",
+      "#830060",
+      "#7c0060",
+      "#680060",
+      "#60005f",
+      "#48005f",
+      "#3d005e"
+    ];
+
+    circles.forEach(function (circle, index) {
+      circle.x = 0;
+      circle.y = 0;
+      circle.style.backgroundColor = colors[index % colors.length];
+    });
+
+    window.addEventListener("mousemove", function (e) {
+      coords.x = e.clientX;
+      coords.y = e.clientY;
+
+    });
+
+    function animateCircles() {
+
+      let x = coords.x;
+      let y = coords.y;
+
+      circles.forEach(function (circle, index) {
+        circle.style.left = x - 12 + "px";
+        circle.style.top = y - 12 + "px";
+
+        circle.style.scale = (circles.length - index) / circles.length;
+
+        circle.x = x;
+        circle.y = y;
+
+        const nextCircle = circles[index + 1] || circles[0];
+        x += (nextCircle.x - x) * 0.3;
+        y += (nextCircle.y - y) * 0.3;
+      });
+
+      requestAnimationFrame(animateCircles);
+    }
+
+    animateCircles();
+
+    let eyeIcon = document.getElementById("eyeicon");
+    let password = document.getElementById("password");
+    let eyeIconLogin = document.getElementById("eyeicon-login");
+    let passwordLogin = document.getElementById("login_password");
+    let passwordStrength = document.getElementById("password-strength");
+    let lowUpperCase = document.querySelector(".low-upper-case i");
+    let number = document.querySelector(".one-number i");
+    let specialChar = document.querySelector(".one-special-char i");
+    let eightChar = document.querySelector(".eight-character i");
+
+    // Set the password field to type "password" by default
+    password.type = "password";
+    eyeIcon.src = "../images/eye-close.png"; // Set the initial eye icon as closed
+
+    eyeIcon.onclick = function () {
+      if (password.type === "password") {
+        password.type = "text";
+        eyeIcon.src = "../images/eye-open.png";
+      } else {
+        password.type = "password";
+        eyeIcon.src = "../images/eye-close.png";
+      }
+    };
+
+    passwordLogin.type = "password";
+    eyeIconLogin.src = "../images/eye-close.png"; // Set the initial eye icon as closed
+
+    eyeIconLogin.onclick = function () {
+      if (passwordLogin.type === "password") {
+        passwordLogin.type = "text";
+        eyeIconLogin.src = "../images/eye-open.png";
+      } else {
+        passwordLogin.type = "password";
+        eyeIconLogin.src = "../images/eye-close.png";
+      }
+    };
+
+    password.addEventListener("keyup", function () {
+      let pass = document.getElementById("password").value;
+      checkStrength(pass);
+    });
+
+    function checkStrength(password) {
+      let strength = 0;
+
+      //If password contains both lower and uppercase characters
+      if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
+        strength += 1;
+        lowUpperCase.classList.remove('fa-circle');
+        lowUpperCase.classList.add('fa-check');
+      } else {
+        lowUpperCase.classList.add('fa-circle');
+        lowUpperCase.classList.remove('fa-check');
+      }
+      //If it has numbers and characters
+      if (password.match(/([0-9])/)) {
+        strength += 1;
+        number.classList.remove('fa-circle');
+        number.classList.add('fa-check');
+      } else {
+        number.classList.add('fa-circle');
+        number.classList.remove('fa-check');
+      }
+      //If it has one special character
+      if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) {
+        strength += 1;
+        specialChar.classList.remove('fa-circle');
+        specialChar.classList.add('fa-check');
+      } else {
+        specialChar.classList.add('fa-circle');
+        specialChar.classList.remove('fa-check');
+      }
+      //If password is greater than 7
+      if (password.length > 7) {
+        strength += 1;
+        eightChar.classList.remove('fa-circle');
+        eightChar.classList.add('fa-check');
+      } else {
+        eightChar.classList.add('fa-circle');
+        eightChar.classList.remove('fa-check');
+      }
+
+      // If value is less than 2
+      if (strength < 2) {
+        passwordStrength.classList.remove('progress-bar-warning');
+        passwordStrength.classList.remove('progress-bar-success');
+        passwordStrength.classList.add('progress-bar-danger');
+        passwordStrength.style = 'width: 10%';
+      } else if (strength == 3) {
+        passwordStrength.classList.remove('progress-bar-success');
+        passwordStrength.classList.remove('progress-bar-danger');
+        passwordStrength.classList.add('progress-bar-warning');
+        passwordStrength.style = 'width: 60%';
+      } else if (strength == 4) {
+        passwordStrength.classList.remove('progress-bar-warning');
+        passwordStrength.classList.remove('progress-bar-danger');
+        passwordStrength.classList.add('progress-bar-success');
+        passwordStrength.style = 'width: 100%';
+      }
+    }
+
+  </script>
+
+  <script>
+
+    //   function sendMail(){
+    //         let params={
+    //             name:document.getElementById('name').value,
+    //             email:document.getElementById('email').value,
+    //             subject:document.getElementById('subject').value,
+    //             message:document.getElementById('message').value,
+    //             subscribe:document.getElementById('newsletter-email').value
+    //         }
+    //         EmailJSResponseStatus.send("service_lktb68z","template_w79vd94",params,"o6kveYmOSDrs0l1Mg")
+    //         .then(alert('Email sent successfully'))
+    //       }
+
+
+    // document.querySelector('subscribe-btn').addEventListener('submit', sendMail());
+    // Function to toggle dark mode
+    function toggleDarkMode() {
+      const isDarkMode = isDarkModePreferred();
+      setDarkModePreference(!isDarkMode);
+      applyDarkModePreference();
+    }
+
+    // Function to apply dark mode preference
+    function applyDarkModePreference() {
+      const isDarkMode = isDarkModePreferred();
+      if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+        document.getElementById('theme-icon').src = './assets/images/icons8-sun.svg';
+      } else {
+        document.body.classList.remove('dark-mode');
+        document.getElementById('theme-icon').src = './assets/images/moon_solid.svg';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentTheme = localStorage.getItem('theme');
+      const switchCheckbox = document.getElementById('switch');
+    
+      if (!switchCheckbox) {
+        console.error("Switch checkbox not found!");
+        return;
+      }
+    
+      const applyDarkModeStyles = () => {
+        document.body.classList.remove('light-mode');
+        document.body.classList.add('dark-mode');
+      };
+    
+      const applyLightModeStyles = () => {
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add('light-mode');
+      };
+    
+      const initializeTheme = () => {
+        if (currentTheme === 'dark-mode') {
+          applyDarkModeStyles();
+          switchCheckbox.checked = true;
+        } else {
+          applyLightModeStyles();
+        }
+      };
+    
+      const handleThemeChange = () => {
+        if (switchCheckbox.checked) {
+          applyDarkModeStyles();
+          localStorage.setItem('theme', 'dark-mode');
+        } else {
+          applyLightModeStyles();
+          localStorage.setItem('theme', 'light-mode');
+        }
+      };
+    
+      initializeTheme();
+      switchCheckbox.addEventListener('change', handleThemeChange);
+    });
+    
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const backToTopButton = document.getElementById('back-to-top-container');
+
+      function checkButtonVisibility() {
+        if (window.innerWidth > 100 && window.scrollY > 100) {
+          backToTopButton.style.display = 'block';
+        } else {
+          backToTopButton.style.display = 'none';
+        }
+      }
+
+      window.addEventListener('scroll', checkButtonVisibility);
+      window.addEventListener('resize', checkButtonVisibility);
+
+      backToTopButton.addEventListener('click', function () {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      checkButtonVisibility();
+    });
+
+  </script>
+<script>
+const navbar=document.querySelector('.navbar'),
+NavButton=document.querySelector('.nav-toggle-btn'),
+open=document.querySelector('.open'),
+close=document.querySelector('.close');
+let count=0
+NavButton.addEventListener('click',()=>{
+      
+if(count===0){
+navbar.classList.remove('nav_activated')
+open.classList.add('close')
+close.classList.add('open')
+open.classList.remove('open')
+close.classList.remove('close')
+count++
+}
+else{
+navbar.classList.add('nav_activated')
+open.classList.add('open')
+close.classList.add('close')
+open.classList.remove('close')
+close.classList.remove('open')
+count=0
+}
+})
+</script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, reload, deleteUser, FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-auth.js";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAIDh842xGC_NZj6pMcB9THjNQ1DyUVnZU",
+    authDomain: "swapreads-c7d1d.firebaseapp.com",
+    projectId: "swapreads-c7d1d",
+    storageBucket: "swapreads-c7d1d.appspot.com",
+    messagingSenderId: "912206670085",
+    appId: "1:912206670085:web:9a6182b16ac2529510ef6c"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Register event
+  const registerForm = document.getElementById('registerForm');
+  registerForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Send email verification
+      await sendEmailVerification(user);
+      alert('Registration successful! Please check your email to verify your account.');
+
+      // Set a timeout for checking email verification
+      setTimeout(async () => {
+        await reload(user);
+        if (!user.emailVerified) {
+          await deleteUser(user)
+            .then(() => {
+              alert('Account deleted due to unverified email.');
+              location.reload(); // Reload the page after deletion
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              alert(errorMessage);
+              location.reload(); // Reload the page on error
+            });
+        }
+      }, 30000); // 30 seconds
+
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage);
+      location.reload(); // Reload the page on error
+    }
+  });
+
+  // Login event
+  const spcharRegex = /[<>"/]/;
+  const loginForm = document.getElementById('loginForm');
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+
+    if(spcharRegex.test(email) || spcharRegex.test(password))
+  {
+    alert("Email or password cannot contain <, >, \", or /");
+    return
+  }
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Check if email is verified
+      await reload(user); // Ensure latest user data is fetched
+      if (user.emailVerified) {
+        window.location.href = '/index.html'; // Redirect to index.html upon successful login
+      } else {
+        alert('Please verify your email address.');
+      }
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage);
+      location.reload(); // Reload the page on error
+    }
+  });
+
+  // Facebook sign-in event
+  const facebookSignInBtn = document.getElementById('facebookSignInBtn');
+  facebookSignInBtn.addEventListener('click', async () => {
+    const provider = new FacebookAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      // Handle successful sign-in here
+      window.location.href = '/index.html'; // Redirect to index.html upon successful login
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage);
+      location.reload(); // Reload the page on error
+    }
+  });
+
+  // Google sign-in event
+  const googleSignInBtn = document.getElementById('googleSignInBtn');
+  googleSignInBtn.addEventListener('click', async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      // Handle successful sign-in here
+      window.location.href = '/index.html'; // Redirect to index.html upon successful login
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage);
+      location.reload(); // Reload the page on error
+    }
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Password visibility toggle for registration
+    const eyeIconRegister = document.getElementById("eyeicon-register");
+    const passwordRegister = document.getElementById("registerPassword");
+  
+    if (eyeIconRegister && passwordRegister) {
+      eyeIconRegister.addEventListener("click", () => {
+        if (passwordRegister.type === "password") {
+          passwordRegister.type = "text";
+          eyeIconRegister.src = "../images/eye-open.png"; // Path to the open eye icon
+        } else {
+          passwordRegister.type = "password";
+          eyeIconRegister.src = "../images/eye-close.png"; // Path to the closed eye icon
+        }
+      });
+    } else {
+      console.error('Register icon or password field not found.');
+    }
+  
+    // Password visibility toggle for login
+    const eyeIconLogin = document.getElementById("eyeicon-login");
+    const passwordLogin = document.getElementById("loginPassword");
+  
+    if (eyeIconLogin && passwordLogin) {
+      eyeIconLogin.addEventListener("click", () => {
+        if (passwordLogin.type === "password") {
+          passwordLogin.type = "text";
+          eyeIconLogin.src = "../images/eye-open.png"; // Path to the open eye icon
+        } else {
+          passwordLogin.type = "password";
+          eyeIconLogin.src = "../images/eye-close.png"; // Path to the closed eye icon
+        }
+      });
+    } else {
+      console.error('Login icon or password field not found.');
+    }
+  });
+  </script>
+  
+
+</body>
+</html>
+
