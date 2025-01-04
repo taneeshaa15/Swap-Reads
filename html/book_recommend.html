@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Select Genre</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon_package_v0.16/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon_package_v0.16/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon_package_v0.16/apple-touch-icon.png">
+    <link rel="manifest" href="../favicon_package_v0.16/site.webmanifest">
+    <link rel="mask-icon" href="../favicon_package_v0.16/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/BookRecommend.css">
+    <link rel="stylesheet" href="./assets/css/MenuClick.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="../css/preloader.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preload" as="image" href="../images/hero-banner.png">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../js/rateUsModal.js" defer></script>
+    <script src="../js/preloader.js"></script>
+     
+    <style>
+      @media (max-width: 575px) {
+        .switch-container {
+          margin-top: 4.2rem;
+          margin-right: 1rem;
+        }
+  
+        /* Navbar Toggle Button placed in center */
+        .nav-toggle-btn {
+          margin-top: -2rem;
+          margin-left: 2.2rem;
+        }
+  
+        .switch-label {
+          top: -1rem !important
+        }
+      }
+
+
+      .action {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+}
+
+.action .profile {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.action .profile img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.action .menu {
+  position: absolute;
+  top: 120px;
+  right: -10px;
+  padding: 10px 20px;
+  background: #fff;
+  width: 200px;
+  box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  transition: 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.action .menu.active {
+  top: 80px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.action .menu::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: 28px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+.action .menu h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px 0;
+  font-weight: 500;
+  color: #555;
+  line-height: 1.5em;
+}
+
+.action .menu h3 span {
+  font-size: 14px;
+  color: #cecece;
+  font-weight: 300;
+}
+
+.action .menu ul li {
+  list-style: none;
+  padding: 16px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+}
+
+.action .menu ul li img {
+  max-width: 20px;
+  margin-right: 10px;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+.action .menu ul li:hover img {
+  opacity: 1;
+}
+
+.action .menu ul li a {
+  display: inline-flex;
+  text-align: center;
+  padding-left: 5%;
+  font-weight: 300;
+  font-size: 19px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: 0.5s;
+}
+
+.action .menu ul li:hover a {
+  color: #ff5d94;
+  font-size: 21px;
+
+}
+.hamburger{
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 24px;
+    left: 1.5%;
+}
+.line{
+    width: 36px;
+    height: 5px;
+    margin: 4px 4px;
+    background-color: rgb(240, 15, 15);
+}
+@media only screen and (max-width:1063px){
+    .nav{
+        flex-direction: column;
+    }
+    .header{
+        flex-direction: column;
+        height: 53.8rem;
+        transition: 0.55s all ease-out;
+        padding-top: 5px;
+    }
+    .navbar-item{
+        margin-right: 40px;
+    }
+    .navbar-list{
+      position: relative;
+      top: 200px;
+    }
+    .hamburger{
+        display: block;
+    }
+    .nav-h{
+        height: 78px;
+        width: 100vw;
+    }
+    .vis-h{
+        opacity: 0;
+    }
+    .logo img{
+      position: relative;
+      top: 17px;
+      left: 350px;
+    }
+}
+@media only screen and (max-width:990px){
+  .header{
+    height: 0;
+  }
+  .navbar-list{
+    top: 0;
+  }
+  .logo img{
+    top: -9px;
+    left: 50px;
+  }
+}
+.navbar-item {
+  margin-top: 10px; /* Increase the top margin of each item */
+}
+    </style>
+</head>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const backToTopButton = document.getElementById('back-to-top-container');
+
+      function checkButtonVisibility() {
+        if (window.innerWidth > 100 && window.scrollY > 100) {
+          backToTopButton.style.display = 'block';
+        } else {
+          backToTopButton.style.display = 'none';
+        }
+      }
+
+      window.addEventListener('scroll', checkButtonVisibility);
+      window.addEventListener('resize', checkButtonVisibility);
+
+      backToTopButton.addEventListener('click', function () {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      checkButtonVisibility();
+    });
+
+</script>
+
+<body>
+
+    <div id="preloader">
+        <div class="loader">
+          <div class="book-wrapper">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="white"
+              viewBox="0 0 126 75"
+              class="book"
+            >
+              <rect                                
+                stroke-width="5"
+                stroke="#e05452"
+                rx="7.5"
+                height="70"                     
+                width="121"
+                y="2.5"
+                x="2.5"
+              ></rect>
+              <line
+                stroke-width="5"
+                stroke="#e05452"
+                y2="75"
+                x2="63.5"
+                x1="63.5"
+              ></line>
+              <path
+                stroke-linecap="round"
+                stroke-width="4"
+                stroke="#c18949"
+                d="M25 20H50"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-width="4"
+                stroke="#c18949"
+                d="M101 20H76"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-width="4"
+                stroke="#c18949"
+                d="M16 30L50 30"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-width="4"
+                stroke="#c18949"
+                d="M110 30L76 30"
+              ></path>
+            </svg>
+        
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#ffffff74"
+              viewBox="0 0 65 75"
+              class="book-page"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-width="4"
+                stroke="#c18949"
+                d="M40 20H15"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-width="4"
+                stroke="#c18949"
+                d="M49 30L15 30"
+              ></path>
+              <path
+                stroke-width="5"
+                stroke="#e05452"
+                d="M2.5 2.5H55C59.1421 2.5 62.5 5.85786 62.5 10V65C62.5 69.1421 59.1421 72.5 55 72.5H2.5V2.5Z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+        
+      </div>
+      <header class="header header-anim nav-h" data-header>
+
+        <div class="container mobile-container-styles" style="padding-left: 0;">
+    
+          <nav class="navbar nav_activated" data-navbar>
+    
+    
+            <ul class="navbar-list nav">
+              <a href="../../index.html" onclick="lenis.scrollTo('index.html');" class="logo" style="display:flex;">
+                <img src="../images/final.png" class="logopic" style=" width: 150px;">
+              </a>
+              <li class="navbar-item">
+                <a href="../../index.html" onclick="lenis.scrollTo('#home')" class="navbar-link" data-nav-link><i
+                    class="ri-home-fill"></i> Home</a>
+              </li>
+               <li class="navbar-item">
+                    <a href="../html/about.html"  class="navbar-link" data-nav-link><i
+                        class="ri-home-fill"></i> About Us </a>
+                  </li>
+                  
+              <li class="navbar-item">
+                <a href="../../index.html#benefits" onclick="lenis.scrollTo('#benefits')" class="navbar-link" data-nav-link><i
+                    class="ri-bar-chart-fill"></i> Benefits</a>
+              </li>
+    
+              <li class="navbar-item">
+                <a href="../../index.html#genre" onclick="lenis.scrollTo('#genre')" class="navbar-link" data-nav-link><i
+                    class="ri-bar-chart-fill"></i> Genre</a>
+              </li>
+    
+              <li class="navbar-item">
+                <a href="../../index.html#contact" onclick="lenis.scrollTo('#contact')" class="navbar-link" data-nav-link><i
+                    class="ri-customer-service-2-fill"></i> Contact</a>
+                </li>
+                <li class="navbar-item">
+                  <a href="../../index.html#faq" onclick="lenis.scrollTo('#faqq')" class="navbar-link" data-nav-link>
+                      <i class="ri-questionnaire-fill"></i> FAQ
+                  </a>
+              </li>
+    
+              <li class="navbar-item">
+                <a href="../../index.html#rateus" onclick="openRateUsModal(); return false;" class="navbar-link">Rate Us</a></li>
+               
+              <li class="navbar-item" id="login-signup-link">
+                <a href="../html/login.html" class="navbar-link">Login/Signup</a>
+              </li>
+              
+              
+              <li class="navbar-item dropdown" id="more-dropdown">
+                <a href="#" class="navbar-link" id="more-link">More
+                  <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em"
+                    viewBox="0 0 24 24">
+                    <path fill="currentcolor" d="m12 13.171l4.95-4.95l1.414 1.415L12 16L5.636 9.636L7.05 8.222z" />
+                  </svg></a>
+                <div class="dropdown-menu" id="dropdown-menu">
+    
+                  <ul class="dropdown-menu-list">
+                    <li>
+                      <a href="chat.html" class="navbar-link" style="font-family: sans-serif; color: black; margin-bottom: 5px;">
+                        Community chat
+                    </a>
+                    </li>
+                    
+                    <li class="dropdown-menu-item">
+                      <a href="../html/pricing.html" onclick="lenis.scrollTo('#pricing')" class="navbar-link" data-nav-link><i
+                          class="ri-price-tag-3-fill"></i> Pricing</a>
+                    </li>
+                    <li class="dropdown-menu-item">
+                      <a href="../html/booklistswap.html" class="navbar-link">Booklist for Swapping</a>
+                    </li>
+                    <li class="dropdown-menu-item">
+                      <a href="../html/book_recommend.html" class="navbar-link" data-nav-link>
+                        <i class="ri-customer-service-2-fill"></i> Book Recommendation
+                      </a>
+                    </li>
+                    <li class="dropdown-menu-item">
+                      <a href="../html/freeBooks.html" onclick="lenis.scrollTo('#E-books')" class="navbar-link"
+                        data-nav-link><i class="ri-price-tag-3-fill"></i>Free E-books</a>
+                    </li>
+                    <li class="dropdown-menu-item">
+                      <a href="../html/read_later.html" class="navbar-link" data-nav-link><i class="ri-price-tag-3-fill"></i>Read Later</a>
+                    </li>
+                    <li class="dropdown-menu-item">
+                      <a href=".../html/ConnReader.html" class="navbar-link" data-nav-link><i class="ri-price-tag-3-fill"></i>Reader Connection</a>
+                    </li>
+                    <li class="dropdown-menu-item">
+                      <a href="../html/about.html" class="navbar-link">About</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+              <div class="action">
+                <div class="profile" onclick="menuToggle();">
+                  <img id="profile-avatar" src="../images/avatar1.jpg" />
+                </div>
+                <div class="menu">
+                  <h3>XYZ<br /><span>Book Lover</span></h3>
+                  <ul>
+                    <li>
+                      <img src="../images/user.jpg" /><a href="../../profile.html">My profile</a>
+                    </li>
+                    <li>
+                      <img src="../images/edit profile.jpg" /><a href="../html/profileedit.html">Edit profile</a>
+                    </li>
+                    <li>
+                      <img src="../images/inbox.png" /><a href="#">Inbox</a>
+                    </li>
+                    <li>
+                      <img src="../images/settings.png" /><a href="#">Settings</a>
+                    </li>
+                    <li><img src="../images/help.png" /><a href="#">Help</a></li>
+                    <li>
+                      <img src="../images/logout.png" /><a href="#">Logout</a>
+                    </li>
+                  </ul>
+                </li>
+                  </div>
+                </ul>
+                  </div>
+                  <script>
+                   document.addEventListener("DOMContentLoaded", () => {
+        const savedAvatar = localStorage.getItem("selectedAvatar");
+        if (savedAvatar) {
+            document.getElementById("profile-avatar").src = `./assets/images/${savedAvatar}`;
+        }
+    });
+    
+            
+                    function menuToggle() {
+                        const toggleMenu = document.querySelector(".menu");
+                        toggleMenu.classList.toggle("active");
+                    }
+                </script>
+              <!-- Google Translate Element -->
+              <!-- <li class="navbar-item">
+                <div id="google_element"></div>
+              </li> -->
+            </ul>
+            <!-- <div class="hamburger">
+              <div class="line"></div>
+              <div class="line"></div>
+              <div class="line"></div>
+            </div> -->
+          </nav>
+          <div id="mobile_View_Menu">
+            <span id="menu_lines"></span>
+           </div>
+        <script>
+            let menu=document.getElementById('mobile_View_Menu')
+            let navbar_con=document.querySelector('.navbar')
+            menu.addEventListener('click',()=>{
+              if(menu.classList.contains('open_menu')){
+                menu.classList.remove('open_menu')
+                navbar_con.classList.add('nav_activated')
+              }
+              else{
+                menu.classList.add('open_menu')
+                navbar_con.classList.remove('nav_activated')
+              }
+            })
+          </script>
+        <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+        <script>
+          function loadGoogleTranslate() {
+            new google.translate.TranslateElement({
+              pageLanguage: 'en'
+            }, 'google_element');
+          }
+        </script>
+        <script>
+          // const hamburger=document.querySelector('.hamburger');
+          // const head=document.querySelector('.header');
+          // const nav=document.querySelector('.nav');
+          // hamburger.addEventListener('click',()=>{
+          //   head.classList.toggle('nav-h');
+          //   nav.classList.toggle('vis-h');
+          // })
+          // let lastScrollTop = 0;
+          // function onScroll() {
+          //     let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+          //     const header = document.querySelector('.header');
+    
+          //     if (currentScroll > lastScrollTop) {
+          //         header.classList.add('hidden');
+          //     } else {
+          //         header.classList.remove('hidden');
+          //     }
+          //     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+          // }
+    
+    
+      window.addEventListener("scroll", onScroll);
+    </script>
+    
+    
+    
+        
+        <!-- <div class="switch-toggle-container">
+    
+    
+          window.addEventListener("scroll", onScroll);
+        </script>
+        <div class="switch-toggle-container">
+    
+          <div class="switch-container switch-container-mobile">
+            <input type="checkbox" id="switch" class="switch-checkbox">
+            <label for="switch" class="switch-label">
+              <div class="switch-button">
+                <span class="material-icons sun-icon">wb_sunny</span>
+                <span class="material-icons moon-icon">brightness_2</span>
+              </div>
+            </label>
+          </div> -->
+    
+          <!-- <button class="nav-toggle-btn" aria-label="toggle menu" data-nav-toggler id="nav-toggle-button">
+            <ion-icon name="menu-outline" aria-hidden="true" class="md hydrated open"></ion-icon>
+    
+            <ion-icon name="close-outline" aria-hidden="true" class="md hydrated close"></ion-icon>
+          </button> -->
+          <div class="switch-container" style="top: 15px;">
+            <input type="checkbox" id="switch" class="switch-checkbox">
+            <label for="switch" class="switch-label">
+              <div class="switch-button">
+                <span class="material-icons sun-icon">wb_sunny</span>
+                <span class="material-icons moon-icon">brightness_2</span>
+              </div>
+            </label>
+          </div>
+        </div>
+    
+    
+    
+        </div>
+      </header>
+      <main>
+    
+        <!-- Rate Us Modal Pop up -->
+        <!-- <div class="rate-us-modal-wrapper">
+          <div class="rate-us-modal">
+            <a onclick="closeRateUsModal()" class="home_button"></a>
+            <h1 class="rating_heading">Rate Us</h1>
+            <div class="star_rating">
+              <p>How was your experience?</p>
+              <button class="star">&#9734;</button>
+              <button class="star">&#9734;</button>
+              <button class="star">&#9734;</button>
+              <button class="star">&#9734;</button>
+              <button class="star">&#9734;</button>
+              <p class="current_rating"> 0 of 5</p>
+            </div>
+            <button id="submit_rating" class="submit_button">Submit Rating</button>
+            <p class="thank_you_message">Thank you for rating us!</p>
+          </div>
+
+        </div> -->
+        <article>
+    
+    <div id="recommend">
+        <p class="section-subtitle" id="heading" >Book Recommendation</p>
+        <h2 class="h2 section-title has-underline">
+            Discover Your Next Read
+        </h2>
+        <div class="container00">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h2 id="upb">User Preference Bar</h2>
+            <div class="preference-bar">
+                <label for="genre">Select Genre:</label>
+                <select id="genre">
+                    <option value="select">Select</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="technology">Technology</option>
+                    <option value="classics">Classics</option>
+                    <option value="self-help">Self-Help</option>
+                    <option value="science-fiction">Science Fiction</option>
+                    <option value="mystery">Mystery</option>
+                    <option value="adventure">Adventure</option>
+                    <option value="romance">Romance</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="biography">Biography</option>
+                    <option value="action">Action</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="Detective Fiction">Detective Fiction</option>
+                    <!-- Add more options as needed -->
+                </select>
+                <div class="author">
+            <input type="text" id="author" name="author" placeholder="Enter author name" required class="input-field" size="20px">
+            </div>
+                <button onclick="redirectToRecommendations()" class="btn-primary">Get Recommendations</button>
+            </div>
+        </div>
+       
+        <!-- Recommendation Results Section -->
+        <div id="recommendationResults" class="container01" style="display: none;">
+            <h1 id="recommendationTitle" class="recommendationTitle-heading" style="font-family: 'Philosopher', sans-serif;">Recommended Books</h1>
+            <div id="booksContainer" class="books-container">
+                <!-- Book recommendations will be displayed here -->
+            </div>
+        </div></div>
+      <h1 class="trending"><center>Trending Books </center></h1>
+	<div class="gallery-container">
+		<div class="gallery" id="b1">
+			<div class="booki">
+				<img src="../images/trendingbook1.jpg" alt="Book 1"><br>
+				<a href="https://www.gutenberg.org/ebooks/73862"><button class="preview-button">Read Now</button></a>
+			</div>
+      </div>
+
+
+      <div class="gallery" id="b2">
+	     <div class="booki" >
+				<img src="../images/trendingbook2.jpg" alt="Book 2"><br>
+				<a href="https://www.gutenberg.org/ebooks/73864"><button class="preview-button">Read Now</button></a>
+			</div>
+    </div>
+    <div class="gallery"  id="b3">
+		 <div class="booki">
+				<img src="../images/trendingbook3.jpg" alt="Book 3"><br>
+				<a href="https://www.gutenberg.org/ebooks/73856"></a><button class="preview-button">Read Now</button>
+			</div>
+    </div>
+    <div class="gallery"  id="b4">
+			<div class="booki">
+				<img src="../images/trendingbook4.jpg" alt="Book 4"><br> 
+				<a href="https://www.gutenberg.org/ebooks/73851"></a><button class="preview-button">Read Now</button>
+			</div>
+    </div>
+    <div class="gallery"  id="b5">
+			<div class="booki">
+				<img src="../images/trendingbook5.jpg" alt="Book 5"><br> 
+				<a href="https://www.gutenberg.org/ebooks/73850"></a><button class="preview-button">Read Now</button>
+			</div>
+    </div>
+		</div>
+        </div>
+
+
+
+    <script>
+        const coords = { x: 0, y: 0 };
+        const circles = document.querySelectorAll(".circle");
+
+        const colors = [
+        "#ffb56b",
+        "#fdaf69",
+        "#f89d63",
+        "#f59761",
+        "#ef865e",
+        "#ec805d",
+        "#e36e5c",
+        "#df685c",
+        "#d5585c",
+        "#d1525c",
+        "#c5415d",
+        "#c03b5d",
+        "#b22c5e",
+        "#ac265e",
+        "#9c155f",
+        "#950f5f",
+        "#830060",
+        "#7c0060",
+        "#680060",
+        "#60005f",
+        "#48005f",
+        "#3d005e"
+        ];
+
+        circles.forEach(function (circle, index) {
+        circle.x = 0;
+        circle.y = 0;
+        circle.style.backgroundColor = colors[index % colors.length];
+        });
+
+        window.addEventListener("mousemove", function (e) {
+        coords.x = e.clientX;
+        coords.y = e.clientY;
+
+        });
+
+        function animateCircles() {
+
+        let x = coords.x;
+        let y = coords.y;
+
+        circles.forEach(function (circle, index) {
+            circle.style.left = x - 12 + "px";
+            circle.style.top = y - 12 + "px";
+
+            circle.style.scale = (circles.length - index) / circles.length;
+
+            circle.x = x;
+            circle.y = y;
+
+            const nextCircle = circles[index + 1] || circles[0];
+            x += (nextCircle.x - x) * 0.3;
+            y += (nextCircle.y - y) * 0.3;
+        });
+
+        requestAnimationFrame(animateCircles);
+        }
+
+        animateCircles();
+
+        function redirectToRecommendations() {
+            const genre = document.getElementById('genre').value;
+            const author = document.getElementById('author').value;
+
+            if (genre === 'select' && !author) {
+                alert('Please select a genre or provide an author.');
+            } else {
+                const recommendations = getRecommendations(genre, author);
+                displayRecommendations(recommendations);
+                document.getElementById('recommendationResults').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+
+        // Simulated function to get book recommendations
+        function getRecommendations(genre, author) {
+          let recommendations = []
+            switch (genre) {
+                case 'fiction':
+                    recommendations = [
+                        {
+                            title: "To Kill a Mockingbird",
+                            author: "Harper Lee",
+                            genre: "Fiction",
+                            image: "https://cdn2.penguin.com.au/covers/original/9781784870799.jpg",
+                            year: 1960,
+                            description: "A classic novel set in the fictional town of Maycomb, Alabama, during the Great Depression. The story explores themes of racial injustice and moral growth through the eyes of a young girl named Scout Finch."
+                        },
+                        {
+                            title: "1984",
+                            author: "George Orwell",
+                            genre: "Science Fiction",
+                            image: "https://www.bookgeeks.in/wp-content/uploads/2021/07/1984-by-George-Orwell-1.jpg",
+                            year: 1949,
+                            description: "A dystopian novel set in a totalitarian society where individualism and independent thinking are suppressed. The story follows Winston Smith, a low-ranking member of the ruling Party, as he rebels against the oppressive regime."
+                        },
+                        {
+                            title: "The Great Gatsby",
+                            author: "F. Scott Fitzgerald",
+                            genre: "Fiction",
+                            image: "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781982146702/the-great-gatsby-9781982146702_xlg.jpg",
+                            year: 1925,
+                            description: "Set in the Roaring Twenties, this novel explores themes of love, wealth, and the American Dream. The story follows Jay Gatsby, a mysterious millionaire, and his pursuit of the elusive Daisy Buchanan."
+                        },
+                        {
+                            title: 'Brave New World',
+                            author: 'Aldous Huxley',
+                            image: 'https://tse4.mm.bing.net/th?id=OIP.hkQOsQlEiOBnF5jQ660r9gHaLJ&pid=Api&P=0&h=180',
+                            genre: 'Fiction',
+                            year: 1932,
+                            description: 'A novel depicting a dystopian future where individuality is suppressed and people are artificially bred in a controlled society.'
+                        },
+                        {
+                            title: 'The Catcher in the Rye',
+                            author: 'J.D. Salinger',
+                            image: 'https://tse4.mm.bing.net/th?id=OIP.WCVypoHL39VejGNd1Nu7ngHaLR&pid=Api&P=0&h=180',
+                            genre: 'Fiction',
+                            year: 1951,
+                            description: 'A novel about teenage angst and alienation, following the protagonist Holden Caulfield as he navigates life in New York City.'
+                        },
+                        {
+                            title: 'The Hobbit',
+                            author: 'J.R.R. Tolkien',
+                            image: 'https://tse2.mm.bing.net/th?id=OIP.u1jvgQh_S5zIR3e4uX5oNwHaLH&pid=Api&P=0&h=180',
+                            genre: 'Fiction',
+                            year: 1937,
+                            description: 'A fantasy novel following the quest of Bilbo Baggins, a hobbit who embarks on an adventure to reclaim treasure guarded by a dragon.'
+                        },
+                        {
+                            title: 'The Alchemist',
+                            author: 'Paulo Coelho',
+                            image: 'https://m.media-amazon.com/images/I/61HAE8zahLL._AC_UF1000,1000_QL80_.jpg',
+                            genre: 'Fiction',
+                            year: 1988,
+                            description: 'A novel about Santiago, an Andalusian shepherd boy, who journeys to Egypt in search of a treasure buried in the Pyramids.'
+                        }
+                    ];
+                    break;
+                case 'technology':
+                    recommendations = [
+                        {
+                            title: "Clean Code: A Handbook of Agile Software Craftsmanship",
+                            author: "Robert C. Martin",
+                            genre: "Technology",
+                            image: "https://miro.medium.com/max/1103/1*PKsDuPxNoKJyJvmlLc64qg.jpeg",
+                            year: 2008,
+                            description: "A guide to writing clean, readable, and maintainable code. It provides principles and best practices for software development, emphasizing the importance of code quality."
+                        },
+                        {
+                            title: "The Age of AI: And Our Human Future",
+                            author: "Henry A. Kissinger, Eric Schmidt, Daniel Huttenlocher",
+                            genre: "Technology",
+                            image: "https://m.media-amazon.com/images/I/41PLbUTNN1L.jpg",
+                            year: 2021,
+                            description: "Three experts explore the rise of Artificial Intelligence, its impact on society, and the ethical considerations that come with this powerful technology."
+                        },
+                        {
+                            title: "Factfulness: Ten Reasons We're Wrong About the World – And Why Things Are Better Than You Think",
+                            author: "Hans Rosling",
+                            genre: "Technology (Societal Impact)",
+                            image: "https://m.media-amazon.com/images/I/71sQyS8-M-L._AC_UF1000,1000_QL80_.jpg",
+                            year: 2018,
+                            description: "This book challenges our perception of the world, using statistics to show how technology has improved living standards globally. It encourages a more fact-based and optimistic view of human progress."
+                        },
+                        {
+                            title: "Web Programming with HTML5, CSS, and JavaScript",
+                            author: "Dean",
+                            genre: "Technology",
+                            image: "http://prodimage.images-bn.com/pimages/9781284091793_p0_v2_s1200x630.jpg",
+                            year: 2018,
+                            description: "A comprehensive guide to web programming using HTML5, CSS, and JavaScript. The book covers the fundamentals and advanced techniques for creating responsive and interactive web applications."
+                        },
+                        {
+                            title: "Steve Jobs",
+                            author: "Walter Isaacson",
+                            genre: "Technology",
+                            image: "https://tse4.mm.bing.net/th?id=OIP.RHPauuod2hNhqK6NoLgNKQHaLT&pid=Api&P=0&h=180",
+                            year: 2011,
+                            description: "Steve Jobs by Walter Isaacson is a biography that provides a deep insight into the life of the co-founder of Apple, detailing his innovative spirit, personal challenges, and profound impact on technology and culture.",
+                        },
+                        {
+                            title: "The Code Book",
+                            author: "Simon Singh",
+                            genre: "Technology",
+                            image: "https://tse2.mm.bing.net/th?id=OIP.uNxaRpxXUHZXpAasjABadwAAAA&pid=Api&P=0&h=180",
+                            year: 1999,
+                            description: "Explores the history of cryptography, from ancient codes to modern encryption. It covers key events like the cracking of the Enigma machine and highlights the impact of cryptography on today's digital world.",
+                        },
+                        {
+                            title: "The Soul of a New Machine",
+                            author: "Tracy Kidder",
+                            genre: "Technology",
+                            image: "https://upload.wikimedia.org/wikipedia/en/2/28/The_soul_of_a_new_machine_--_book_cover.jpg",
+                            year: 1981,
+                            description: "It is a gripping tale of a team of engineers racing to build a revolutionary computer in the 1970s, highlighting their dedication, challenges, and the spirit of innovation.",
+                        }
+                    ];
+                    break;
+                case 'classics':
+                    recommendations= [
+                        {
+                            title: "Pride and Prejudice",
+                            author: "Jane Austen",
+                            genre: "Classics",
+                            image: "https://cdn2.penguin.com.au/covers/original/9780141330167.jpg",
+                            year: 1813,
+                            description: "A romantic novel set in early 19th-century England, focusing on the themes of love, marriage, and social status. The story follows the spirited Elizabeth Bennet as she navigates the complexities of society and falls in love with the enigmatic Mr. Darcy."
+                        },
+                        {
+                            title: "Emma",
+                            author: "Jane Austen",
+                            genre: "Classics",
+                            image: "https://cdn2.penguin.com.au/covers/original/9780141192475.jpg",
+                            year: 1815,
+                            description: "A novel about youthful hubris and romantic misunderstandings. The story takes place in the fictional village of Highbury and the surrounding estates of Hartfield, Randalls, and Donwell Abbey."
+                        },
+                        {
+                            title: "Jane Eyre",
+                            author: "Charlotte Brontë",
+                            genre: "Classics",
+                            image: "https://cdn2.penguin.com.au/covers/original/9780141040387.jpg",
+                            year: 1847,
+                            description: "A novel that follows the emotions and experiences of its eponymous character, including her growth to adulthood and her love for Mr. Rochester, the Byronic master of fictitious Thornfield Hall."
+                        },
+                        {
+                            title: "Anna Karenina",
+                            author: "Leo Tolstoy",
+                            genre: "Classics",
+                            image: "https://cdn2.penguin.com.au/covers/original/9780141199610.jpg",
+                            year: 1877,
+                            description: "A tragic story about a married aristocrat/socialite and her affair with the affluent Count Vronsky."
+                        },
+                        {
+                            title: "Moby-Dick",
+                            author: "Herman Melville",
+                            genre: "Classics",
+                            image: "https://cdn2.penguin.com.au/covers/original/9780143105954.jpg",
+                            year: 1851,
+                            description: "A tale of obsession and revenge, focusing on the monomaniacal quest of Ahab, captain of the whaler Pequod, for revenge against Moby Dick, the giant white sperm whale that on the previous whaling voyage bit off Ahab's leg at the knee."
+                        }
+                    ];
+                    break;
+                case 'self-help':
+                    recommendations = [
+                        {
+                            title: "The Power of Positive Thinking",
+                            author: "Norman Vincent Peale",
+                            genre: "Self-Help",
+                            image: "https://i.thenile.io/r1000/9788194824169.jpg?r=5fc9067a7064c",
+                            year: 1952,
+                            description: "A self-help book that emphasizes the impact of positive thinking on achieving success and personal happiness. It blends psychology, practical advice, and spiritual guidance."
+                        },
+                        {
+                            title: "Time Management",
+                            author: "Brian Tracy",
+                            genre: "Self-Help",
+                            image: "http://prodimage.images-bn.com/pimages/9780814433430_p0_v1_s1200x630.jpg",
+                            year: 2007,
+                            description: "A self-help book offering practical strategies and techniques for effectively managing time, increasing productivity, and achieving personal and professional goals."
+                        },
+                        {
+                            title: "How to Win Friends and Influence People",
+                            author: "Dale Carnegie",
+                            genre: "Self-Help",
+                            image: "https://tse4.mm.bing.net/th?id=OIP.-UiuMZdwnvJQlsdHFrLxPAHaLq&pid=Api&P=0&h=180",
+                            year: 1936,
+                            description: "A self-help book that provides practical advice on how to improve your relationships and influence others positively. It covers techniques for handling people, making people like you, and winning people to your way of thinking."
+                        },
+                        {
+                            title: "The 7 Habits of Highly Effective People",
+                            author: "Stephen R. Covey",
+                            genre: "Self-Help",
+                            image: "https://tse1.mm.bing.net/th?id=OIP.U_xujkJ3DznR8RoMtznT2QHaLO&pid=Api&P=0&h=180",
+                            year: 1989,
+                            description: "A self-help book that presents a principle-centered approach for solving personal and professional problems. It emphasizes character ethics and principles of fairness, integrity, honesty, and human dignity."
+                        },
+                        {
+                            title: "Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones",
+                            author: "James Clear",
+                            genre: "Self-Help",
+                            image: "https://images-na.ssl-images-amazon.com/images/I/91bYsX41DVL.jpg",
+                            year: 2018,
+                            description: "A practical guide to understanding how habits work and how to create and maintain good habits over time. It offers a framework for changing your habits and achieving remarkable results."
+                        },
+                        {
+                            title: "The Power of Positive Thinking",
+                            author: "Norman Vincent Peale",
+                            genre: "Self-Help",
+                            image: "https://i.thenile.io/r1000/9788194824169.jpg?r=5fc9067a7064c",
+                            year: 1952,
+                            description: "A self-help book that emphasizes the impact of positive thinking on achieving success and personal happiness. It blends psychology, practical advice, and spiritual guidance."
+                        }
+                    ];
+                    break;
+                case 'science-fiction':
+                    recommendations = [
+                        {
+                            title: "Dune",
+                            author: "Frank Herbert",
+                            genre: "Science Fiction",
+                            image: "https://i.thenile.io/r1000/9780593099322.jpg?r=5e75f0e9c3c7d",
+                            year: 1965,
+                            description: "Set in the distant future amidst a huge interstellar empire, the novel tells the story of young Paul Atreides, whose family accepts the stewardship of the desert planet Arrakis."
+                        },
+                        {
+                            title: "Neuromancer",
+                            author: "William Gibson",
+                            genre: "Science Fiction",
+                            image: "https://tse3.mm.bing.net/th?id=OIP.p9EE9O6O2tPpKgzYjPqKIAHaJ4&pid=Api&P=0&h=180",
+                            year: 1984,
+                            description: "A cyberpunk novel set in a future where cyberspace, artificial intelligence, and multinational corporations are dominant. The story follows a washed-up computer hacker hired by a mysterious employer.",
+                        },
+                        {
+                            title: "Foundation",
+                            author: "Isaac Asimov",
+                            genre: "Science Fiction",
+                            image: "https://tse4.mm.bing.net/th?id=OIP.nh7p_Q0WrrCxvdvI0FOoEAHaMM&pid=Api&P=0&h=180",
+                            year: 1951,
+                            description: "The first book in Asimov's Foundation series, it explores the concept of psychohistory, a blend of history, sociology, and mathematical statistics, to predict the future of large populations.",
+                        },
+                        {
+                            title: "The Left Hand of Darkness",
+                            author: "Ursula K. Le Guin",
+                            genre: "Science Fiction",
+                            image: "https://tse4.mm.bing.net/th?id=OIP.RRWtDjq1114Q3BcOLDQ8UgHaLN&pid=Api&P=0&h=180",
+                            year: 1969,
+                            description: "A novel set in the future on the planet Gethen, where the inhabitants can change their gender at will. It explores themes of gender and sexuality, politics, and the nature of human emotions.",
+                        },
+                        {
+                            title: "Snow Crash",
+                            author: "Neal Stephenson",
+                            genre: "Science Fiction",
+                            image: "https://m.media-amazon.com/images/I/71+c-NTaA6L._AC_UF1000,1000_QL80_.jpg",
+                            year: 1992,
+                            description: "A cyberpunk novel set in a future America where the internet, virtual reality, and the mafia dominate society. The story follows Hiro Protagonist, a computer hacker and pizza delivery driver.",
+                        }
+                    ];
+                    break;
+                case 'mystery':
+                    recommendations = [
+                        {
+                            title: "Gone Girl",
+                            author: "Gillian Flynn",
+                            genre: "Mystery",
+                            image: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQUo8M52d0y-5pZ5EWH87ic9_dsTPMUD2ObvEfUYD9fo86jFxuf",
+                            year: 1965,
+                            description: "Set in the distant future amidst a huge interstellar empire, the novel tells the story of young Paul Atreides, whose family accepts the stewardship of the desert planet Arrakis."
+                        },
+                        {
+                            title: "The Girl with the Dragon Tattoo",
+                            author: "Stieg Larsson",
+                            genre: "Mystery",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3cMvcHM-OMya1LDncgOZO7WEfzRI3RUVsiiAfN_Sdig&s",
+                            year: 2005,
+                            description: "A spellbinding amalgam of murder mystery, family saga, love story, and financial intrigue, this first installment in the Millennium series finds journalist Mikael Blomkvist and hacker Lisbeth Salander unearthing dark secrets of the Vanger family while investigating a disappearance."
+                        },
+                        {
+                            title: "The Woman in White",
+                            author: "Wilkie Collins",
+                            genre: "Mystery",
+                            image: "https://wordsworth-editions.com/wp-content/uploads/2022/03/9781840220841.jpg",
+                            year: 1859,
+                            description: "A tale of secrets, mistaken identities, surprise revelations, and villainy, centering on the mysterious appearance of a woman dressed entirely in white, and the intricate and often sinister web that surrounds her."
+                        },
+                        {
+                            title: "The Silent Patient",
+                            author: "Alex Michaelides",
+                            genre: "Mystery",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx8LKcM_fdQmHpU3phtFEyNKQl8f9DabjhrVTEvVbESw&s",
+                            year: 2019,
+                            description: "Alicia Berenson, a famous painter, shoots her husband in the head five times and then never speaks another word. Her silence turns a domestic tragedy into a mystery that captures the public imagination, and Theo Faber, a forensic psychologist, is determined to unravel her motive."
+                        },
+                        {
+                            title: "In the Woods",
+                            author: "Tana French",
+                            genre: "Mystery",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSthFRrDepvHXsPh-Mo8zJONx2PQ6KA1oyqNfvUZAy7UA&s",
+                            year: 2007,
+                            description: "Detective Rob Ryan and his partner Cassie Maddox investigate the murder of a twelve-year-old girl in a small Irish town, only to find that it may be linked to a traumatic event from Ryan's own past."
+                        },
+                        {
+                            title: "Big Little Lies",
+                            author: "Liane Moriarty",
+                            genre: "Mystery",
+                            image: "https://m.media-amazon.com/images/I/41LvfWGfleL.jpg",
+                            year: 2014,
+                            description: "Follows three women, each at a crossroads, and explores the secrets they keep, the lies they tell, and the dangerous truths they hold. The book culminates in a shocking murder at a school trivia night."
+                        }
+                    ];
+                    break;
+                case 'adventure':
+                    recommendations =  [
+                        {
+                            title: "The Hobbit",
+                            author: "J.R.R. Tolkien",
+                            genre: "Adventure",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFJhg31KXNOMvMii0zIzp2_VR77kax_fYTCByo-uM_2g&s",
+                            year: 1937,
+                            description: "Bilbo Baggins, a hobbit, is swept into an epic quest by the wizard Gandalf and a company of dwarves. They journey to the Lonely Mountain to reclaim a treasure guarded by the dragon Smaug."
+                        },
+                        {
+                            title: "Treasure Island",
+                            author: "Robert Louis Stevenson",
+                            genre: "Adventure",
+                            image: "https://m.media-amazon.com/images/I/710K9pWWZ+L.AC_UF1000,1000_QL80.jpg",
+                            year: 1883,
+                            description: "A tale of pirates, treasure maps, mutiny, and adventure on the high seas, featuring the iconic character Long John Silver."
+                        },
+                        {
+                            title: "Jurassic Park",
+                            author: "Michael Crichton",
+                            genre: "Adventure",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu1rFTsYvvRB8NEp1ZlMzxxwKekD1VQx-lxPjJu35nTw&s",
+                            year: 1990,
+                            description: "A billionaire creates a theme park populated by cloned dinosaurs. Chaos ensues when the dinosaurs break free, and a group of visitors must survive the island's dangers."
+                        },
+                        {
+                            title: "The Call of the Wild",
+                            author: "Jack London",
+                            genre: "Adventure",
+                            image: "https://m.media-amazon.com/images/I/91IGZKkFKEL.AC_UF1000,1000_QL80.jpg",
+                            year: 1903,
+                            description: "The story of Buck, a domestic dog who is kidnapped and sold as a sled dog in the Yukon during the 19th-century Klondike Gold Rush. Buck eventually embraces his wild instincts and becomes a leader among wolves."
+                        },
+                        {
+                            title: "The Adventures of Huckleberry Finn",
+                            author: "Mark Twain",
+                            genre: "Adventure",
+                            image: "https://m.media-amazon.com/images/I/91sBZnKzEfL.AC_UF1000,1000_QL80.jpg",
+                            year: 1884,
+                            description: "The adventures of a young boy named Huck Finn and an escaped slave named Jim as they journey down the Mississippi River on a raft. Along the way, they encounter various characters and face moral dilemmas."
+                        }
+                    ];
+                    break;
+
+                case 'romance':
+                    return [
+                        {
+                            title: "Pride and Prejudice",
+                            author: "Jane Austen",
+                            genre: "Romance",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB_SuoaZ0VAf3RZa33Qj_O4KvIvOh_dT2-_oe-Z_crdA&s",
+                            year: 1813,
+                            description: "Follows the emotional development of Elizabeth Bennet, one of five sisters, as she navigates issues of manners, upbringing, morality, education, and marriage in the society of the landed gentry of early 19th-century England."
+                        },
+                        {
+                            title: "The Notebook",
+                            author: "Nicholas Sparks",
+                            genre: "Romance",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBBT_N_1_LoTQVE_-jS5jovBsZf--8oRKFagfbpNOq_w&s",
+                            year: 1996,
+                            description: "Set in 1940s South Carolina, it tells the story of Noah Calhoun, a young man from town, and Allie Nelson, the daughter of a wealthy family, who fall in love one summer but are separated due to their social differences."
+                        },
+                        {
+                            title: "Outlander",
+                            author: "Diana Gabaldon",
+                            genre: "Romance",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY12bpTWAgflKG-VQFir9w73n99PpvkP3OGmXM6ju_mg&s",
+                            year: 1991,
+                            description: "Follows the story of Claire Randall, a married combat nurse from 1945 who is mysteriously swept back in time to 1743 Scotland, where she meets and falls in love with Jamie Fraser, a young Scottish warrior."
+                        },
+                        {
+                            title: "Me Before You",
+                            author: "Jojo Moyes",
+                            genre: "Romance",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlKyoEg3_-dDYJSs9ItE932-2xp9myDAk_D-wEhmWoaQ&s",
+                            year: 2012,
+                            description: "Tells the story of Louisa Clark, a young woman living in a small English town, and Will Traynor, a wealthy man left paralyzed after an accident. Their lives change when Louisa becomes Will's caregiver."
+                        },
+                        {
+                            title: "The Fault in Our Stars",
+                            author: "John Green",
+                            genre: "Romance",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIFzYk4PXdeS9Efq41_CA6EOjHtUUDI11RnN-fHSkklg&s",
+                            year: 2012,
+                            description: "Tells the story of Hazel Grace Lancaster, a sixteen-year-old cancer patient who falls in love with Augustus Waters, a former basketball player and amputee. Their relationship is both beautiful and tragic."
+                        },
+                        {
+                            title: "A Walk to Remember",
+                            author: "Nicholas Sparks",
+                            genre: "Romance",
+                            image: "https://oldbookdepot.in/wp-content/uploads/2017/07/Walk-To-Remember-by-Nicholas-Sparks.jpg",
+                            year: 1999,
+                            description: "Follows the story of Landon Carter, a popular student, and Jamie Sullivan, the daughter of the town's Baptist minister, as they fall in love despite their differences and face challenges together."
+                        }
+                    ];
+                    break;
+
+
+
+                case 'fantasy':
+                    recommendations = [
+                        {
+                            title: "Harry Potter and the Sorcerer's Stone",
+                            author: "J.K. Rowling",
+                            genre: "Fantasy",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCWu3J0NrLumT38kEO5YFuV-O_rOtKUH1juFDdpt3Lkw&s",
+                            year: 1997,
+                            description: "Follows the journey of a young wizard, Harry Potter, who discovers his magical heritage and attends Hogwarts School of Witchcraft and Wizardry, where he uncovers dark secrets and battles the dark wizard Voldemort."
+                        },
+                        {
+                            title: "A Wizard of Earthsea",
+                            author: "Ursula K. Le Guin",
+                            genre: "Fantasy",
+                            image: "https://m.media-amazon.com/images/I/61OKh0zgqeL._AC_UF1000,1000_QL80_.jpg",
+                            year: 1968,
+                            description: "The first book in the Earthsea Cycle, this classic coming-of-age story follows Ged, a powerful young wizard who loses control of his magic and sets off on a journey to restore balance."
+                        },
+                        {
+                            title: "The Hobbit",
+                            author: "J.R.R. Tolkien",
+                            genre: "Fantasy",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFJhg31KXNOMvMii0zIzp2_VR77kax_fYTCByo-uM_2g&s",
+                            year: 1937,
+                            description: "Bilbo Baggins, a hobbit, is swept into an epic quest by the wizard Gandalf and a company of dwarves. They journey to the Lonely Mountain to reclaim a treasure guarded by the dragon Smaug."
+                        },
+                        {
+                            title: "Neverwhere",
+                            author: "Neil Gaiman",
+                            image: "https://m.media-amazon.com/images/I/41fC-yQ6-fL.jpg",
+                            year: 1996,
+                            genre: "Fantasy",
+                            description: "A contemporary fantasy novel about a young man named Richard Mayhew who stumbles into an underground world of London, known as Neverwhere.  There, he encounters a colorful cast of characters and must find his way back to his own world."
+                        },
+                        {
+                            title: "A Game of Thrones",
+                            author: "George R.R. Martin",
+                            genre: "Fantasy",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUiHq1CGLz28XlbkIsv8YpWfBC2IbZ-zjfc8iwZ74Bqg&s",
+                            year: 1996,
+                            description: "The first book in the epic fantasy series 'A Song of Ice and Fire', it follows the power struggles among noble families as they vie for control of the Iron Throne of the Seven Kingdoms, set against a backdrop of dark magic and political intrigue."
+                        }
+                    ];
+                    break; 
+
+
+                case 'biography':
+                    recommendations = [
+                        {
+                            "title": "Steve Jobs",
+                            "author": "Walter Isaacson",
+                            "genre": "Biography",
+                            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT5eZeoUVLrSQvhgSf93s5FU0KLnSxkh9ffnu2x2PTGA&s",
+                            "year": 2011,
+                            "description": "This biography provides a detailed account of the life of Steve Jobs, the co-founder of Apple Inc., covering his innovations, successes, and personal struggles."
+                        },
+                        {
+                            "title": "Becoming",
+                            "author": "Michelle Obama",
+                            "genre": "Biography, Memoir",
+                            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxwaMtGfiG10FGy5AVn9H5jVvXePmIbumw8Ee5-DuVIw&s",
+                            "year": 2018,
+                            "description": "Michelle Obama's memoir chronicles her life from childhood to her time as First Lady of the United States, offering insights into her journey, experiences, and values."
+                        },
+                        {
+                            "title": "The Diary of a Young Girl",
+                            "author": "Anne Frank",
+                            "genre": "Biography, Memoir",
+                            "image": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1560816565l/48855.jpg",
+                            "year": 1947,
+                            "description": "Anne Frank's diary, written during her time in hiding from the Nazis in Amsterdam during World War II, provides a poignant and intimate account of her thoughts, feelings, and experiences."
+                        },
+                        {
+                            title: "Leonardo da Vinci",
+                            author: "Walter Isaacson",
+                            genre: "Biography",
+                            image: "https://m.media-amazon.com/images/I/819sg4vB4tL.AC_UF1000,1000_QL80.jpg",
+                            year: 2017,
+                            description: "Walter Isaacson's biography delves into the life and genius of Leonardo da Vinci, exploring his art, science, and enduring legacy."
+                        }
+                    ];
+                    break; 
+                    case 'action':
+                    recommendations = [
+                        {
+                            title: "The Hunger Games",
+                            author: "Suzanne Collins",
+                            genre: "Action, Dystopian",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp5LfFIsqjeK7LnmBxIK4VWYQNTUW1WpNg2d0bltFXTA&s",
+                            year: 2008,
+                            description: "In a dystopian future, Katniss Everdeen volunteers to take her sister's place in the annual Hunger Games, a televised event in which tributes fight to the death until only one remains."
+                        },
+                        {
+                            title: "The Bourne Identity",
+                            author: "Robert Ludlum",
+                            genre: "Action, Thriller",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdkOHI2PtF2P2dhDazD3dILfCxYNHBrTNlXhvd4PPMxg&s",
+                            year: 1980,
+                            description: "A man is found floating in the Mediterranean Sea with no memory of his past but discovers he possesses deadly skills and is pursued by unknown assailants as he tries to uncover his identity."
+                        },
+                        {
+                            title: "Die Hard",
+                            author: "Roderick Thorp",
+                            genre: "Action, Thriller",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8FJFD-B7QCRp2JmYpsp6KlOT6FY80aEmKKHVYw6cVsg&s",
+                            year: 1979,
+                            description: "NYPD detective John McClane becomes the lone hope for hostages as he battles terrorists led by Hans Gruber during a hostage situation in a Los Angeles skyscraper."
+                        },
+                        {
+                            title: "The Da Vinci Code",
+                            author: "Dan Brown",
+                            genre: "Action, Mystery",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTm4jymF_uMb11oRsYqzS10dbKEdyjlUBrWEaByQYPyA&s",
+                            year: 2003,
+                            description: "Harvard symbologist Robert Langdon finds himself entangled in a thrilling quest to unravel a conspiracy hidden within the works of Leonardo da Vinci, racing against time and mysterious forces."
+                        }
+                    ];
+                    break; 
+
+                    case 'comedy':
+                  recommendations = [
+                        {
+            title: "The Hitchhiker's Guide to the Galaxy",
+            author: "Douglas Adams",
+            genre: "Comedy",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5gkXKVV3AJwixDKM3j4RNKlcqKAVvBtjHQvhignh1YA&s",
+            year: 1979,
+            description: "A comedic science fiction series that follows the misadventures of Arthur Dent, a hapless Englishman who is unexpectedly whisked off Earth by his friend Ford Prefect, a researcher for a guidebook for hitchhikers in space."
+        },
+        {
+            title: "Good Omens",
+            author: "Terry Pratchett & Neil Gaiman",
+            genre: "Comedy",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfQnCuiKUJzJjhthokCXWa0mWqYfAI9qaCySPmXeo7Ww&s",
+            year: 1990,
+            description: "A humorous take on the apocalypse, featuring an angel, Aziraphale, and a demon, Crowley, who have become accustomed to life on Earth and join forces to prevent the coming of the Antichrist and the end of the world."
+        },
+        {
+            title: "Catch-22",
+            author: "Joseph Heller",
+            genre: "Comedy",
+            image: "https://images.squarespace-cdn.com/content/v1/57923bb33e00be1777423ef5/1608157518215-9VHFF8XAJ4KK5VEZO1SW/IMG_5590.jpeg?format=1000w",
+            year: 1961,
+            description: "A satirical novel set during World War II, following the exploits of Captain John Yossarian, a U.S. Army Air Forces B-25 bombardier. The book explores the absurdity of war and bureaucracy, particularly the military's 'catch-22' rule."
+        },
+        {
+            title: "Bridget Jones's Diary",
+            author: "Helen Fielding",
+            genre: "Comedy",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToxsHzKJD15nAGuyrDUUgUXJ6wUgn3pAzEljo-j0tcWg&s",
+            year: 1996,
+            description: "A comedic novel written in the form of a personal diary, chronicling the life of Bridget Jones, a single woman in her 30s living in London. The book humorously explores themes of love, relationships, and self-improvement."
+        },
+        {
+            title: "Three Men in a Boat",
+            author: "Jerome K. Jerome",
+            genre: "Comedy",
+            image: "https://rukminim2.flixcart.com/image/850/1000/kzogn0w0/regionalbooks/g/f/p/three-men-in-a-boat-original-imagbny8kwayhhh9.jpeg?q=90&crop=false",
+            year: 1889,
+            description: "A humorous account of a boating holiday on the Thames taken by three friends: J, Harris, and George, along with their dog, Montmorency. The book is filled with comedic anecdotes and observations about their misadventures."
+        }
+    ];
+    break; 
+
+    case 'Detective Fiction':
+                  recommendations = [
+                        {
+            title: "Murder on the Orient Express",
+            author: "Agatha Christie",
+            genre: "Detective Fiction",
+            image: "https://lyceumtheatre.org/wp-content/uploads/2019/09/Murder-on-the-Orient-Express-WebPstr.jpg",
+            year: 1934,
+            description: "A millionaire is found murdered on a train, and detective Hercule Poirot must find the killer among a dozen of the dead man's enemies, before the murderer decides to strike again. Will he solve the crime?"
+        },
+        {
+            title: "The Adventures of Sherlock Holmes",
+            author: "Arthur Conan Doyle",
+            genre: "Detective Fiction",
+            image: "https://m.media-amazon.com/images/I/513VTCDLp9L._AC_UF894,1000_QL80_.jpg",
+            year: 1892,
+            description: "A collection of twelve short stories featuring the famous detective Sherlock Holmes and his loyal friend Dr. Watson, undertaking complex and intriguing cases.",
+        },
+        {
+            title: "The Girl with the Dragon Tattoo",
+            author: "Stieg Larsson",
+            genre: "Detective Fiction",
+            image: "https://m.media-amazon.com/images/I/61Qs-hoZ-TL._AC_UF1000,1000_QL80_.jpg",
+            year: 2005,
+            description: "The thrilling story of Blomkvist's investigation to find out what happened to a girl, from a wealthy family, who disappeared 40 years ago.",
+        },
+            {
+            title: "The Thursday Murder Club",
+            author: "Richard Osman",
+            genre: "Detective Fiction",
+            image: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582287822i/46000520.jpg",
+            year: 2020,
+            description: "an intelligent mystery and detective themed story, about a group of senior citizens who find themselves in the center of a murder investigation."
+        },
+       
+    ];
+    break; 
+
+                default:
+                  recommendations = [];
+                    break;
+            }
+            if (author) {
+                recommendations = recommendations.filter(book => book.author.toLowerCase().includes(author.toLowerCase()));
+            }
+
+            if (recommendations.length === 0) {
+                recommendations.push({
+                    title: 'No recommendations found',
+                    author: author || 'Any',
+                    genre: genre !== 'select' ? genre : 'Any',
+                    year: '',
+                    description: `No books found for ${author ? `author "${author}" and ` : ''}genre "${genre !== 'select' ? genre : 'Any'}".`,
+                    image: 'https://via.placeholder.com/280x400'
+                });
+            }
+
+            return recommendations;
+        }
+
+
+        
+        // Function to display recommendations
+        
+
+        function displayRecommendations(recommendations) {
+            const recommendationsContainer = document.getElementById('booksContainer');
+            recommendationsContainer.innerHTML = '';
+
+            recommendations.forEach(book => {
+                const bookElement = document.createElement('div');
+                bookElement.classList.add('book');
+
+                const bookInfo = `
+                    <div class="book-info">
+                        <h2>${book.title}</h2>
+                        <p><strong>Author:</strong> ${book.author}</p>
+                        <p><strong>Genre:</strong> ${book.genre}</p>
+                        <p><strong>Year:</strong> ${book.year}</p>
+                        <p><strong>Description:</strong> ${book.description}</p>
+                    </div>
+                    <img src="${book.image}" alt="${book.title}" class="book-image" style="width: 280px; height: 400px;">
+                `;
+                bookElement.innerHTML = bookInfo;
+                recommendationsContainer.appendChild(bookElement);
+            });
+
+            // Show the recommendation results section
+            document.getElementById('recommendationResults').style.display = 'block';
+            document.getElementById('recommendationTitle').innerText = `Recommended Books for ${capitalizeFirstLetter(document.getElementById('genre').value)}`;
+            const recommendationTitle = document.getElementById('recommendationTitle');
+            recommendationTitle.style.fontSize = '42px';
+            recommendationTitle.style.textAlign = 'center';
+            recommendationTitle.style.marginBottom = '23px';
+        }
+        //Helper function
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+      // Function to toggle dark mode
+    function toggleDarkMode() {
+      const isDarkMode = isDarkModePreferred();
+      setDarkModePreference(!isDarkMode);
+      applyDarkModePreference();
+    }
+
+    // Function to apply dark mode preference
+    function applyDarkModePreference() {
+      const isDarkMode = isDarkModePreferred();
+      if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+        document.getElementById('theme-icon').src = './assets/images/icons8-sun.svg';
+      } else {
+        document.body.classList.remove('dark-mode');
+        document.getElementById('theme-icon').src = './assets/images/moon_solid.svg';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentTheme = localStorage.getItem('theme');
+      const switchCheckbox = document.getElementById('switch');
+    
+      if (!switchCheckbox) {
+        console.error("Switch checkbox not found!");
+        return;
+      }
+    
+      const applyDarkModeStyles = () => {
+        document.body.classList.remove('light-mode');
+        document.body.classList.add('dark-mode');
+      };
+    
+      const applyLightModeStyles = () => {
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add('light-mode');
+      };
+    
+      const initializeTheme = () => {
+        if (currentTheme === 'dark-mode') {
+          applyDarkModeStyles();
+          switchCheckbox.checked = true;
+        } else {
+          applyLightModeStyles();
+        }
+      };
+    
+      const handleThemeChange = () => {
+        if (switchCheckbox.checked) {
+          applyDarkModeStyles();
+          localStorage.setItem('theme', 'dark-mode');
+        } else {
+          applyLightModeStyles();
+          localStorage.setItem('theme', 'light-mode');
+        }
+      };
+    
+      initializeTheme();
+      switchCheckbox.addEventListener('change', handleThemeChange);
+    });
+    
+</script>
+
+
+    </article>
+    <footer>
+      <div class="foot-top">
+        <div class="foot-left">
+  
+          <div class="desc">
+  <!--google translate-->
+            <div id="google_translate_element"></div>
+  
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement(
+                        {pageLanguage: 'en'},
+                        'google_translate_element'
+                    );
+                }
+            </script>
+  
+            <script type="text/javascript"
+                    src=
+        "https://translate.google.com/translate_a/element.js?
+        cb=googleTranslateElementInit">
+            </script>
+            <div><a href="#" class="logo">SwapReads</a></div>
+            <div>
+              <p style="text-align: justify; " class="description">SwapReads.com is the ultimate destination for book
+                lovers
+                seeking to swap and
+  
+                discover new literary gems.
+                Connect with fellow enthusiasts, exchange your favorite reads, and embark on exciting new adventures in
+                the
+                world of literature—all on one convenient platform. Join us and dive into a universe of endless
+                possibilities!
+              </p>
+            </div>
+  
+          </div>
+        </div>
+        <div class="foot-middle">
+          <h2>Quick Links</h2>
+          <div id="quicklinks">
+            <div>
+            <ul>
+              <li class="foot-quick"><a href="/index.html" onclick="lenis.scrollTo('#home')">Home</a></li>
+              <li class="foot-quick"><a href="/index.html#benefits" onclick="lenis.scrollTo('#benefits')">Benefits</a></li>
+              <li class="foot-quick"><a href="/index.html#chapters" onclick="lenis.scrollTo('#chapters')">Literary Realms</a></li>
+              <li class="foot-quick"><a href="/index.html#pricing" onclick="lenis.scrollTo('#pricing')">Pricing</a></li>
+              <li class="foot-quick"><a href="book_recommend.html"
+                onclick="lenis.scrollTo('index.html#contact')">Recommended Book</a></li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <li class="foot-quick"><a href="/assets/html/booklistswap.html" onclick="lenis.scrollTo('#contact')">Swap
+                  BookList</a></li>
+              <li class="foot-quick"><a href="/assets/html/freeBooks.html"
+                  onclick="lenis.scrollTo('#contact')">E-Book</a></li>
+              <li class="foot-quick"><a href="/assets/html/about.html" onclick="lenis.scrollTo('#contact')">About</a>
+              </li>
+              <li class="foot-quick"><a href="/index.html#contact" onclick="lenis.scrollTo('#contact')">Contact Us</a></li>
+              <li class="foot-quick"><a href="/index.html#faqq" onclick="lenis.scrollTo('#faqq')">FAQ</a></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+        <div class="social-icons">
+  
+          <style>
+            input[type="email"] {
+                border: 2px solid #ccc; /* Gray border */
+                border-radius: 4px; /* Rounded corners */
+                padding: 10px; /* Inner padding */
+                font-size: 16px; /* Font size */
+            }
+          </style>
+  
+          <form type="newsletter">
+            <label for="newsletter-email" class="newsletter-form">Subscribe to our Newsletter</label>
+            <div class="row-flex">
+                <!-- Email input -->
+                <input type="email" id="newsletter-email" name="email" placeholder="E mail address" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.com$" 
+                title="Please enter a valid email address that ends with '.com'" required>
+                <input type="submit" value="Subscribe" name="subscribe" class="subscribe-btn">
+            </div>
+        </form>
+        <div id="confirmationMessage" style="display: none;">Thank you for subscribing!</div>
+  
+  
+          <div class="icons">
+            <a href="https://www.discord.com/" target="_blank">
+            <div class="icon">
+              <i class="fab fa-discord" title="Discord" style="cursor: pointer;"></i>
+            </div>
+           </a>
+
+            <a href="https://www.linkedin.com/in/anurag-verma-b91417253/" target="_blank">
+            <div class="icon">
+              <i class="fab fa-linkedin" title="linkedin" style="cursor: pointer;"></i>
+            </div>
+          </a>
+
+          <a href="#" target="_blank">
+            <div class="icon">
+              <i class="fab fa-facebook" title="Facebook" style="cursor: pointer;"></i>
+            </div>
+          </a>
+
+          <a href="https://x.com/anuragverma_108" target="_blank">
+            <div class="icon">
+              <i class="fab fa-twitter" title="X"style="cursor: pointer;"></i>
+            </div>
+          </a>
+
+          <a href="#">
+            <div class="icon">
+              <i class="fab fa-instagram" title="Instagram"style="cursor: pointer;"></i>
+            </div>
+          </a>
+
+          <a href="https://www.youtube.com/@anuragbytes" target="_blank" title="YouTube">
+            <div class="icon">
+              <i class="fab fa-youtube" style="cursor: pointer;"></i>
+            </div>
+          </a>
+          <a href="">
+            <div class="icon">
+              <i class="fab fa-github" title="Github"></i>
+            </div>
+          </a>
+  
+          </div>
+  
+  
+          <div id="back-to-top-container" onclick="lenis.scrollTo('#home')" class="right">
+            <div class="circle1">
+              <svg id="back-to-top" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z" />
+              </svg>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+  
+  
+  
+  
+      <!-- adding privacy policy and copyright popup-->
+      <div style="text-align: center; align-items: center;">
+        <p style="text-align: center">
+          &copy;
+          <script>document.write(new Date().getFullYear())</script> All Rights Reserved. Made with ❤ by Guardian Hackers.
+        </p>
+        <div class="row-copy">
+  
+  
+        <a href="#" id="copyrightPolicyLink">Copyright Policy</a> |
+        <a href="#" id="privacyNoticeLink">Privacy Notice</a>
+      </div>
+      </div>
+  
+      <!-- Copyright Policy Modal -->
+      <div id="copyrightPolicyModal" class="modal">
+        <div class="modal-content">
+          <span class="close" id="closeCopyright">&times;</span>
+          <h1>Copyright Policy</h1>
+          <p>Welcome to SwapReads. Here is our copyright policy:</p>
+          <ul>
+            <li>All content on this website is owned by SwapReads unless otherwise stated.</li>
+            <li>You may not reproduce, distribute, or use the content without prior written permission.</li>
+            <li>Users may download and print content for personal use only.</li>
+            <li>Unauthorized use of any content may violate copyright, trademark, and other laws.</li>
+            <li>If you believe your copyrighted work is being infringed upon, please contact us with detailed information.</li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Privacy Notice Modal -->
+      <div id="privacyNoticeModal" class="modal">
+        <div class="modal-content">
+          <span class="close" id="closePrivacy">&times;</span>
+          <h1>Privacy Notice</h1>
+          <p>Welcome to SwapReads. Here is our privacy notice:</p>
+          <ul>
+            <li>We collect personal information when you register, buy, or sell books.</li>
+            <li>We use this information to provide and improve our services.</li>
+            <li>We do not share your personal information with third parties without your consent.</li>
+            <li>We take reasonable measures to protect your data from unauthorized access.</li>
+            <li>You can contact us to update or delete your personal information.</li>
+            <li>By using our site, you consent to our privacy practices.</li>
+          </ul>
+        </div>
+      </div>
+  
+      <script>
+        // Get the modal elements
+        var copyrightModal = document.getElementById("copyrightPolicyModal");
+        var privacyModal = document.getElementById("privacyNoticeModal");
+  
+        // Get the link elements
+        var copyrightLink = document.getElementById("copyrightPolicyLink");
+        var privacyLink = document.getElementById("privacyNoticeLink");
+  
+        // Get the <span> elements that close the modals
+        var closeCopyright = document.getElementById("closeCopyright");
+        var closePrivacy = document.getElementById("closePrivacy");
+  
+        // When the user clicks the link, open the modal 
+        copyrightLink.onclick = function() {
+          copyrightModal.style.display = "block";
+        }
+        privacyLink.onclick = function() {
+          privacyModal.style.display = "block";
+        }
+  
+        // When the user clicks on <span> (x), close the modal
+        closeCopyright.onclick = function() {
+          copyrightModal.style.display = "none";
+        }
+        closePrivacy.onclick = function() {
+          privacyModal.style.display = "none";
+        }
+  
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == copyrightModal) {
+            copyrightModal.style.display = "none";
+          }
+          if (event.target == privacyModal) {
+            privacyModal.style.display = "none";
+          }
+        }
+      </script>
+  
+  
+  
+  </footer>
+</body>
+
+</html>
